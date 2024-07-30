@@ -76,3 +76,57 @@ def explore(character):
     current_location = character['location']
     print(f"You are at {current_location}.")
     print("You can go to the following locations:")
+    for idx, loc in enumerate(locations[current_location], start=1):
+        print(f"{idx}. {loc}")
+    choice = input("Where would you like to go? (enter number): ")
+    try:
+        next_location = locations[current_location][int(choice) - 1]
+        character['location'] = next_location
+        print(f"You travel to {next_location}.")
+        encounter(character)
+    except (IndexError, ValueError):
+        print("Invalid choice. You stay at the current location.")
+
+def encounter(character):
+    if character['location'] == 'Village':
+        village_encounter(character)
+    elif character['location'] in ['Forest', 'Lake', 'Swamp']:
+        forest_encounter(character)
+    elif character['location'] == 'Cave':
+        cave_encounter(character)
+    elif character['location'] == 'Dungeon':
+        dungeon_encounter(character)
+    elif character['location'] == 'Desert':
+        desert_encounter(character)
+    elif character['location'] == 'Castle':
+        castle_encounter(character)
+    elif character['location'] == 'Enchanted Forest':
+        enchanted_forest_encounter(character)
+    elif character['location'] == 'Mystic Pond':
+        mystic_pond_encounter(character)
+    elif character['location'] == 'Celestial Shrine':
+        celestial_encounter(character)
+    elif character['location'] == 'Astral Plane':
+        astral_plane_encounter(character)
+    elif character['location'] == 'Ethereal Realm':
+        ethereal_realm_encounter(character)
+    elif character['location'] == 'Dark Forest':
+        dark_forest_encounter(character)
+    elif character['location'] == 'Shadow Cave':
+        shadow_cave_encounter(character)
+    elif character['location'] == 'Crypt':
+        crypt_encounter(character)
+    elif character['location'] == 'Haunted Mansion':
+        haunted_mansion_encounter(character)
+    elif character['location'] == 'Forgotten Tomb':
+        forgotten_tomb_encounter(character)
+    elif character['location'] == 'Lost City':
+        lost_city_encounter(character)
+    elif character['location'] == 'Ancient Temple':
+        ancient_temple_encounter(character)
+    elif character['location'] == 'Sacred Grove':
+        sacred_grove_encounter(character)
+    elif character['location'] == 'Starlight Clearing':
+        starlight_clearing_encounter(character)
+    else:
+        general_encounter(character)
