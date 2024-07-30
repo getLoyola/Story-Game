@@ -1527,3 +1527,53 @@ def encounter_creatures(character):
         print("You manage to defeat it and gain 50 experience points.")
         character['experience'] += 50
 
+def mystical_library(character):
+    """
+    This function represents an exploration of the Mystical Library, a place full of ancient books,
+    magical scrolls, and hidden knowledge.
+    """
+    print("You step into the Mystical Library, a vast space filled with ancient tomes and magical scrolls.")
+    print("1. Read ancient books")
+    print("2. Study magical scrolls")
+    print("3. Search for hidden knowledge")
+    print("4. Leave the library")
+    choice = input("What would you like to do? (1/2/3/4): ")
+
+    if choice == '1':
+        read_books(character)
+    elif choice == '2':
+        study_scrolls(character)
+    elif choice == '3':
+        search_knowledge(character)
+    elif choice == '4':
+        print("You decide to leave the Mystical Library.")
+    else:
+        print("Invalid choice. You leave the library.")
+
+def read_books(character):
+    books = [
+        'a tome of ancient lore',
+        'a book on magical creatures',
+        'a history of the arcane arts',
+        'a guide to powerful spells'
+    ]
+    book = random.choice(books)
+    print(f"You read {book}.")
+    if book == 'a tome of ancient lore':
+        print("You gain insight into ancient knowledge.")
+        character['experience'] += 40
+    elif book == 'a book on magical creatures':
+        print("You learn about magical creatures.")
+        print("You gain 30 experience points and a magical creature companion.")
+        character['experience'] += 30
+        character['companions'].append('Magical Creature')
+    elif book == 'a history of the arcane arts':
+        print("You gain knowledge of the arcane arts.")
+        print("You learn a new spell.")
+        spells = ['Arcane Missile', 'Mystic Shield', 'Teleport']
+        spell = random.choice(spells)
+        character['inventory'].append(spell)
+    elif book == 'a guide to powerful spells':
+        print("You gain insight into powerful spells.")
+        print("You gain 50 experience points.")
+        character['experience'] += 50
