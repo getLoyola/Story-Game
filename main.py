@@ -823,4 +823,57 @@ def perform_ritual(character):
         print(f"You find a {item}.")
     elif ritual == "You perform a ritual of protection and gain a temporary shield.":
         character['shield'] = character.get('shield', 0) + 20
-        print(ritual)v
+        print(ritual)
+
+def seek_wisdom(character):
+    wisdom = [
+        "You gain insight into a hidden location.",
+        "You receive knowledge about a powerful enemy.",
+        "You discover a new skill.",
+        "You are told of a legendary artifact."
+    ]
+    wisdom_received = random.choice(wisdom)
+    if wisdom_received == "You gain insight into a hidden location.":
+        locations = ['ancient ruins', 'hidden valley', 'forgotten shrine']
+        location = random.choice(locations)
+        print(f"You gain insight into a hidden location: {location}.")
+        print(f"You can now visit the {location}.")
+    elif wisdom_received == "You receive knowledge about a powerful enemy.":
+        print("You receive knowledge about a powerful enemy: The Dark Sorcerer.")
+        character['quests'].append("Defeat the Dark Sorcerer")
+    elif wisdom_received == "You discover a new skill.":
+        skills = ['archery', 'alchemy', 'swordsmanship']
+        skill = random.choice(skills)
+        character['skills'] = character.get('skills', [])
+        character['skills'].append(skill)
+        print(f"You discover a new skill: {skill}.")
+    elif wisdom_received == "You are told of a legendary artifact.":
+        print("You are told of a legendary artifact: The Crystal of Eternity.")
+        character['quests'].append("Find the Crystal of Eternity")
+
+def interact_creatures(character):
+    creatures = [
+        'a friendly unicorn',
+        'a wise old owl',
+        'a mischievous fairy',
+        'a helpful forest spirit'
+    ]
+    creature = random.choice(creatures)
+    print(f"You encounter {creature}.")
+    if creature == 'a friendly unicorn':
+        print("The unicorn offers you a magical blessing.")
+        character['health'] = min(100, character['health'] + 20)
+        print(f"Your health is now {character['health']}.")
+    elif creature == 'a wise old owl':
+        print("The owl shares ancient knowledge with you.")
+        print("You gain 30 experience points.")
+        character['experience'] += 30
+    elif creature == 'a mischievous fairy':
+        print("The fairy plays a trick on you.")
+        print("You lose 10 health points.")
+        character['health'] = max(0, character['health'] - 10)
+        print(f"Your health is now {character['health']}.")
+    elif creature == 'a helpful forest spirit':
+        print("The spirit guides you to a hidden treasure.")
+        treasure(character)
+
