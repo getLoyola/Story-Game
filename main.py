@@ -1741,3 +1741,67 @@ def find_artifact(character):
         print("You gain 60 experience points and a new magical ability.")
         character['experience'] += 60
         character['abilities'].append('New Magical Ability')
+
+def ancient_ruins(character):
+    """
+    This function represents an exploration of the Ancient Ruins, a place full of old structures, forgotten lore,
+    and hidden treasures.
+    """
+    print("You explore the Ancient Ruins, a site filled with old structures and mysterious artifacts.")
+    print("1. Explore the ruins")
+    print("2. Decode ancient inscriptions")
+    print("3. Search for hidden treasures")
+    print("4. Leave the ruins")
+    choice = input("What would you like to do? (1/2/3/4): ")
+
+    if choice == '1':
+        explore_ruins(character)
+    elif choice == '2':
+        decode_inscriptions(character)
+    elif choice == '3':
+        search_treasures(character)
+    elif choice == '4':
+        print("You decide to leave the Ancient Ruins.")
+    else:
+        print("Invalid choice. You leave the ruins.")
+
+def explore_ruins(character):
+    """
+    This function handles exploration within the Ancient Ruins, allowing the player to uncover secrets and hidden areas.
+    """
+    print("You delve deeper into the Ancient Ruins, discovering hidden chambers and forgotten areas.")
+    areas = [
+        'an underground vault',
+        'a hidden library',
+        'a forgotten temple',
+        'a secret passage'
+    ]
+    area = random.choice(areas)
+    print(f"You find {area}.")
+    if area == 'an underground vault':
+        print("The vault contains old treasures.")
+        print("You find a chest with gold and artifacts.")
+        character['inventory'].append('Vault Treasures')
+        character['gold'] = character.get('gold', 0) + 150
+        print("You gain 150 gold coins.")
+    elif area == 'a hidden library':
+        print("The library contains ancient scrolls and books.")
+        print("You gain knowledge and a new spell.")
+        character['inventory'].append('Ancient Scroll')
+        spells = ['Summon Elemental', 'Arcane Blast', 'Time Stop']
+        spell = random.choice(spells)
+        character['inventory'].append(spell)
+    elif area == 'a forgotten temple':
+        print("The temple holds ancient secrets.")
+        print("You discover a powerful relic.")
+        character['inventory'].append('Temple Relic')
+        print("You gain 70 experience points.")
+        character['experience'] += 70
+    elif area == 'a secret passage':
+        print("The passage leads to hidden rooms.")
+        print("You find rare items and a new ability.")
+        items = ['Elven Boots', 'Shadow Dagger']
+        item = random.choice(items)
+        character['inventory'].append(item)
+        character['abilities'].append('Enhanced Agility')
+        print(f"You find a {item} and gain Enhanced Agility.")
