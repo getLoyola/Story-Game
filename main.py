@@ -396,3 +396,59 @@ def shadow_cave_encounter(character):
         treasure(character)
     else:
         print("Invalid choice. You leave the Shadow Cave.")
+
+def crypt_encounter(character):
+    print("You enter the Crypt.")
+    print("1. Explore the tombs")
+    print("2. Search for artifacts")
+    choice = input("What would you like to do? (1/2): ")
+    if choice == '1':
+        print("You find an old scroll.")
+        character['inventory'].append("ancient scroll")
+    elif choice == '2':
+        print("You discover a hidden relic.")
+        character['inventory'].append("relic")
+    else:
+        print("Invalid choice. You leave the Crypt.")
+
+def haunted_mansion_encounter(character):
+    print("You enter the Haunted Mansion.")
+    print("1. Investigate the ghostly presence")
+    print("2. Search for hidden passages")
+    choice = input("What would you like to do? (1/2): ")
+    if choice == '1':
+        print("You encounter a ghost!")
+        combat(character)
+    elif choice == '2':
+        print("You find a hidden passage leading to a secret room.")
+        treasure(character)
+    else:
+        print("Invalid choice. You leave the Haunted Mansion.")
+
+def forgotten_tomb_encounter(character):
+    print("You enter the Forgotten Tomb.")
+    print("1. Examine the sarcophagi")
+    print("2. Search for hidden traps")
+    choice = input("What would you like to do? (1/2): ")
+    if choice == '1':
+        print("You find a hidden compartment with a valuable artifact.")
+        character['inventory'].append("valuable artifact")
+    elif choice == '2':
+        print("You avoid traps and find an old map.")
+        character['inventory'].append("old map")
+    else:
+        print("Invalid choice. You leave the Forgotten Tomb.")
+
+def lost_city_encounter(character):
+    print("You arrive at the Lost City.")
+    print("1. Explore the ruins")
+    print("2. Search for clues")
+    choice = input("What would you like to do? (1/2): ")
+    if choice == '1':
+        print("You find a hidden chamber with treasures.")
+        treasure(character)
+    elif choice == '2':
+        print("You discover ancient writings.")
+        character['inventory'].append("ancient writings")
+    else:
+        print("Invalid choice. You leave the Lost City.")
