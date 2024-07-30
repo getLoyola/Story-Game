@@ -545,3 +545,27 @@ def buy_item(character, market_items):
             print("You don't have any gold.")
     except (IndexError, ValueError):
         print("Invalid choice. You leave the market.")
+
+def sell_item(character):
+    if not character['inventory']:
+        print("You have nothing to sell.")
+        return
+    print("Items in your inventory:")
+    for idx, item in enumerate(character['inventory'], start=1):
+        print(f"{idx}. {item}")
+    print("Which item would you like to sell? (Enter number)")
+    choice = input()
+    try:
+        item = character['inventory'][int(choice) - 1]
+        # Simulate selling price based on item
+        if item in ['potion of healing', 'elixir of strength', 'scroll of wisdom']:
+            price = 10
+        elif item in ['enchanted ring', 'magic wand']:
+            price = 50
+        else:
+            price = 5
+        character['inventory'].remove(item)
+        character['inventory'].append(f"{price} gold")
+        print(f"You sold {item} for {price} gold.")
+    except (IndexError, ValueError):
+        print("Invalid choice. You leave the market.")
