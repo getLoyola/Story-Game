@@ -2057,3 +2057,71 @@ def avoid_traps(character):
         print("You spot the hidden pitfall just in time.")
         print("You gain 25 experience points for your keen senses.")
         character['experience'] += 25
+
+def haunted_mansion(character):
+    """
+    This function represents an exploration of the Haunted Mansion, a spooky place filled with ghosts, hidden rooms,
+    and eerie surprises.
+    """
+    print("You step into the Haunted Mansion, a place full of ghosts and unsettling mysteries.")
+    print("1. Investigate the haunted rooms")
+    print("2. Search for hidden passages")
+    print("3. Communicate with the spirits")
+    print("4. Leave the mansion")
+    choice = input("What would you like to do? (1/2/3/4): ")
+
+    if choice == '1':
+        investigate_rooms(character)
+    elif choice == '2':
+        search_passages(character)
+    elif choice == '3':
+        communicate_spirits(character)
+    elif choice == '4':
+        print("You decide to leave the Haunted Mansion.")
+    else:
+        print("Invalid choice. You leave the mansion.")
+
+def investigate_rooms(character):
+    """
+    This function handles the investigation of haunted rooms within the Haunted Mansion.
+    """
+    rooms = [
+        'a dusty library',
+        'a grand ballroom',
+        'a forgotten study',
+        'a creepy attic'
+    ]
+    room = random.choice(rooms)
+    print(f"You explore {room}.")
+    if room == 'a dusty library':
+        print("The library contains old, enchanted books.")
+        print("You find a spellbook and gain 40 experience points.")
+        character['experience'] += 40
+        character['inventory'].append('Spellbook')
+    elif room == 'a grand ballroom':
+        print("The ballroom is filled with eerie music and ghostly figures.")
+        print("You dance with a ghost and gain 50 experience points.")
+        character['experience'] += 50
+    elif room == 'a forgotten study':
+        print("The study holds clues to the mansion’s mysteries.")
+        print("You find a diary and gain 30 experience points.")
+        character['experience'] += 30
+        character['inventory'].append('Mansion Diary')
+    elif room == 'a creepy attic':
+        print("The attic is dark and full of old furniture.")
+        print("You find a hidden chest with old relics.")
+        relics = ['Phantom Mask', 'Ghostly Necklace']
+        relic = random.choice(relics)
+        character['inventory'].append(relic)
+        print(f"You find a {relic}.")
+
+def search_passages(character):
+    """
+    This function allows the player to search for hidden passages within the Haunted Mansion.
+    """
+    passages = [
+        'a secret room behind a bookshelf',
+        'an underground tunnel',
+        'a hidden chamber behind a painting',
+        'a concealed door in the fireplace'
+    ]
