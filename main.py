@@ -1938,3 +1938,58 @@ def discover_magic(character):
         character['inventory'].append('Magical Cloak')
         print("You gain 40 experience points and the ability to become invisible for a short time.")
         character['experience'] += 40
+
+def dragon_cave(character):
+    """
+    This function represents an exploration of the Dragon Cave, a dangerous place inhabited by powerful dragons
+    and filled with hidden treasures and traps.
+    """
+    print("You enter the Dragon Cave, a perilous area filled with the scent of sulfur and the roar of dragons.")
+    print("1. Challenge the dragon")
+    print("2. Search for hidden treasures")
+    print("3. Avoid traps")
+    print("4. Leave the cave")
+    choice = input("What would you like to do? (1/2/3/4): ")
+
+    if choice == '1':
+        challenge_dragon(character)
+    elif choice == '2':
+        search_cave_treasures(character)
+    elif choice == '3':
+        avoid_traps(character)
+    elif choice == '4':
+        print("You decide to leave the Dragon Cave.")
+    else:
+        print("Invalid choice. You leave the cave.")
+
+def challenge_dragon(character):
+    """
+    This function handles the challenge of facing a dragon in the Dragon Cave.
+    """
+    dragons = [
+        'a young dragon',
+        'a fire-breathing dragon',
+        'a frost dragon',
+        'a legendary dragon'
+    ]
+    dragon = random.choice(dragons)
+    print(f"You encounter {dragon}.")
+    if dragon == 'a young dragon':
+        print("The young dragon is fierce but not very experienced.")
+        print("You defeat the dragon and gain 50 experience points.")
+        character['experience'] += 50
+    elif dragon == 'a fire-breathing dragon':
+        print("The fire-breathing dragon is a formidable opponent.")
+        # Placeholder for combat function
+        combat(character)
+    elif dragon == 'a frost dragon':
+        print("The frost dragon breathes icy breath.")
+        print("You manage to defeat the dragon and gain 60 experience points.")
+        character['experience'] += 60
+    elif dragon == 'a legendary dragon':
+        print("The legendary dragon is incredibly powerful.")
+        # Placeholder for combat function
+        combat(character)
+        print("You defeat the legendary dragon and gain 100 experience points.")
+        character['experience'] += 100
+
