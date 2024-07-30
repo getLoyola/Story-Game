@@ -778,3 +778,49 @@ def seek_guidance(character):
         character['health'] = min(100, character['health'] + 30)
         print(advice)
 
+def enchanted_grove(character):
+    """
+    This function represents an interaction with the Enchanted Grove, where the player can perform rituals,
+    seek ancient wisdom, or interact with mystical creatures.
+    """
+    print("You step into the Enchanted Grove, where the air is filled with magic and the sounds of nature.")
+    print("1. Perform a ritual")
+    print("2. Seek ancient wisdom")
+    print("3. Interact with mystical creatures")
+    print("4. Leave the grove")
+    choice = input("What would you like to do? (1/2/3/4): ")
+
+    if choice == '1':
+        perform_ritual(character)
+    elif choice == '2':
+        seek_wisdom(character)
+    elif choice == '3':
+        interact_creatures(character)
+    elif choice == '4':
+        print("You decide to leave the Enchanted Grove.")
+    else:
+        print("Invalid choice. You leave the grove.")
+
+def perform_ritual(character):
+    rituals = [
+        "You perform a ritual of healing and restore 50 health points.",
+        "You perform a ritual of strength and gain 10 temporary strength points.",
+        "You perform a ritual of luck and find a hidden item.",
+        "You perform a ritual of protection and gain a temporary shield."
+    ]
+    ritual = random.choice(rituals)
+    if ritual == "You perform a ritual of healing and restore 50 health points.":
+        character['health'] = min(100, character['health'] + 50)
+        print(ritual)
+        print(f"Current health: {character['health']}")
+    elif ritual == "You perform a ritual of strength and gain 10 temporary strength points.":
+        character['strength'] = character.get('strength', 0) + 10
+        print(ritual)
+    elif ritual == "You perform a ritual of luck and find a hidden item.":
+        hidden_items = ['ancient coin', 'mystic gem', 'rare artifact']
+        item = random.choice(hidden_items)
+        character['inventory'].append(item)
+        print(f"You find a {item}.")
+    elif ritual == "You perform a ritual of protection and gain a temporary shield.":
+        character['shield'] = character.get('shield', 0) + 20
+        print(ritual)v
