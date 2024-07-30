@@ -1133,3 +1133,73 @@ def ascend_tower(character):
             print("You cross the ice safely.")
             character['experience'] += 50
         else:
+            print("You slip and take 15 damage.")
+            character['health'] = max(0, character['health'] - 15)
+    elif floor == 'Floor of Echoes':
+        print("You encounter echoes of past adventurers.")
+        outcomes = [
+            "You find a clue to the tower's secret.",
+            "You receive a mysterious item.",
+            "You gain insight into a powerful spell."
+        ]
+        outcome = random.choice(outcomes)
+        if outcome == "You find a clue to the tower's secret.":
+            print("You find a clue that helps you understand the tower's mysteries.")
+            character['quests'].append("Discover the tower's secret")
+        elif outcome == "You receive a mysterious item.":
+            mysterious_items = ['Enchanted Ring', 'Phantom Cloak', 'Spectral Blade']
+            item = random.choice(mysterious_items)
+            character['inventory'].append(item)
+            print(f"You receive a {item}.")
+        elif outcome == "You gain insight into a powerful spell.":
+            print("You gain a powerful spell.")
+            character['inventory'].append('Powerful Spell')
+
+def solve_floor_challenge(character):
+    challenges = [
+        'Solve a riddle about the tower',
+        'Complete a combat trial',
+        'Navigate a magical maze',
+        'Decipher an ancient script'
+    ]
+    challenge = random.choice(challenges)
+    print(f"You encounter a challenge: {challenge}")
+    answer = input("Solve the challenge (type your answer): ")
+    if answer:
+        print("You solve the challenge successfully!")
+        reward = random.choice(["You gain 50 experience points.", "You find a hidden treasure.", "You receive a rare item."])
+        if reward == "You gain 50 experience points.":
+            character['experience'] += 50
+            print(reward)
+        elif reward == "You find a hidden treasure.":
+            treasure(character)
+        elif reward == "You receive a rare item.":
+            rare_items = ['Ancient Amulet', 'Mystic Staff', 'Golden Chalice']
+            item = random.choice(rare_items)
+            character['inventory'].append(item)
+            print(f"{reward} {item} has been added to your inventory.")
+    else:
+        print("You fail the challenge and are forced to retreat.")
+
+def search_secrets(character):
+    secrets = [
+        'a hidden passage',
+        'a forgotten spellbook',
+        'a cursed artifact',
+        'a hidden stash of gold'
+    ]
+    secret = random.choice(secrets)
+    print(f"While searching, you find {secret}.")
+    if secret == 'a hidden passage':
+        print("You discover a hidden passage leading to a secret room.")
+        # Placeholder for secret room function
+        secret_room(character)
+    elif secret == 'a forgotten spellbook':
+        print("You find a forgotten spellbook and gain a new spell.")
+        character['inventory'].append('Forgotten Spellbook')
+    elif secret == 'a cursed artifact':
+        print("You find a cursed artifact. It’s powerful but comes with risks.")
+        character['inventory'].append('Cursed Artifact')
+    elif secret == 'a hidden stash of gold':
+        print("You find a hidden stash of gold!")
+        character['inventory'].append('Gold')
