@@ -1993,3 +1993,67 @@ def challenge_dragon(character):
         print("You defeat the legendary dragon and gain 100 experience points.")
         character['experience'] += 100
 
+
+def search_cave_treasures(character):
+    """
+    This function allows the player to search for treasures within the Dragon Cave.
+    """
+    treasures = [
+        'a dragon’s hoard of gold',
+        'a gem-encrusted crown',
+        'a magical elixir',
+        'a dragon scale shield'
+    ]
+    treasure = random.choice(treasures)
+    print(f"You find {treasure}.")
+    if treasure == 'a dragon’s hoard of gold':
+        print("The hoard contains a large amount of gold.")
+        character['inventory'].append('Dragon’s Gold')
+        character['gold'] = character.get('gold', 0) + 500
+        print("You gain 500 gold coins.")
+    elif treasure == 'a gem-encrusted crown':
+        print("The crown is adorned with precious gems.")
+        character['inventory'].append('Gem-encrusted Crown')
+        print("You gain 40 experience points and a boost in charisma.")
+        character['experience'] += 40
+    elif treasure == 'a magical elixir':
+        print("The elixir has healing properties.")
+        character['inventory'].append('Magical Elixir')
+        print("You gain 30 experience points and full health restoration.")
+        character['experience'] += 30
+        # Placeholder for health restoration
+    elif treasure == 'a dragon scale shield':
+        print("The shield is made from dragon scales.")
+        character['inventory'].append('Dragon Scale Shield')
+        print("You gain 50 experience points and increased defense.")
+        character['experience'] += 50
+
+def avoid_traps(character):
+    """
+    This function handles avoiding traps within the Dragon Cave.
+    """
+    traps = [
+        'a lava pit',
+        'a collapsing ceiling',
+        'a poisonous gas trap',
+        'a hidden pitfall'
+    ]
+    trap = random.choice(traps)
+    print(f"You encounter {trap}.")
+    if trap == 'a lava pit':
+        print("You narrowly avoid falling into the lava pit.")
+        print("You gain 20 experience points for your agility.")
+        character['experience'] += 20
+    elif trap == 'a collapsing ceiling':
+        print("You dodge falling debris from the collapsing ceiling.")
+        print("You gain 30 experience points for your quick reflexes.")
+        character['experience'] += 30
+    elif trap == 'a poisonous gas trap':
+        print("You manage to escape the poisonous gas trap.")
+        print("You find an antidote and gain 40 experience points.")
+        character['experience'] += 40
+        character['inventory'].append('Antidote')
+    elif trap == 'a hidden pitfall':
+        print("You spot the hidden pitfall just in time.")
+        print("You gain 25 experience points for your keen senses.")
+        character['experience'] += 25
