@@ -340,3 +340,59 @@ def rest(character):
     character['health'] = min(100, character['health'] + 10)
     print(f"Current health: {character['health']}")
 
+def check_quests(character):
+    print("Active Quests:")
+    for quest in character['quests']:
+        print(f"- {quest}")
+    if not character['quests']:
+        print("You have no active quests.")
+    print("Completed Quests:")
+    for quest in character['completed_quests']:
+        print(f"- {quest}")
+    if not character['completed_quests']:
+        print("You have no completed quests.")
+
+def quest_complete(character, quest):
+    if quest in character['quests']:
+        character['quests'].remove(quest)
+        character['completed_quests'].append(quest)
+        print(f"Quest '{quest}' completed!")
+    else:
+        print("You have not accepted this quest.")
+
+def level_up(character):
+    experience_needed = 100
+    if character['experience'] >= experience_needed:
+        character['experience'] -= experience_needed
+        print("Congratulations! You've leveled up!")
+
+def dark_forest_encounter(character):
+    print("You enter the Dark Forest.")
+    print("1. Seek out the guardian")
+    print("2. Search for hidden paths")
+    choice = input("What would you like to do? (1/2): ")
+    if choice == '1':
+        print("You find the forest guardian.")
+        print("The guardian offers to train you.")
+        character['experience'] += 50
+        print(f"You gain 50 experience points. Total experience: {character['experience']}")
+    elif choice == '2':
+        print("You find a hidden path leading to an ancient altar.")
+        character['inventory'].append("ancient artifact")
+    else:
+        print("Invalid choice. You leave the Dark Forest.")
+
+def shadow_cave_encounter(character):
+    print("You enter the Shadow Cave.")
+    print("1. Investigate the shadows")
+    print("2. Search for treasure")
+    choice = input("What would you like to do? (1/2): ")
+    if choice == '1':
+        print("You encounter shadowy figures.")
+        print("They attack you!")
+        combat(character)
+    elif choice == '2':
+        print("You find a treasure chest hidden in the cave.")
+        treasure(character)
+    else:
+        print("Invalid choice. You leave the Shadow Cave.")
