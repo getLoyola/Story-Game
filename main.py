@@ -240,3 +240,52 @@ def trade(character):
             print("You don't have enough gold.")
     except (IndexError, ValueError):
         print("Invalid choice. The merchant leaves.")
+
+def new_quest(character):
+    quests = ['Find the lost artifact', 'Rescue the village elder', 'Collect rare herbs', 'Defeat the dark wizard', 'Explore the ancient ruins']
+    quest = random.choice(quests)
+    print(f"You have accepted a new quest: {quest}")
+    character['quests'].append(quest)
+
+def help_child(character):
+    print("You help the child find their way home.")
+    print("The child's parents reward you with some gold.")
+    character['inventory'].append("gold")
+
+def hidden_passage(character):
+    passages = ['a secret cave', 'an old library', 'a hidden vault', 'a mystical chamber']
+    passage = random.choice(passages)
+    print(f"You find {passage}!")
+    if passage == 'a secret cave':
+        print("The cave is dark and damp.")
+        treasure(character)
+    elif passage == 'an old library':
+        print("The library contains ancient books.")
+        print("You find a book of spells.")
+        character['inventory'].append("book of spells")
+    elif passage == 'a hidden vault':
+        print("The vault is filled with old treasures.")
+        treasure(character)
+    elif passage == 'a mystical chamber':
+        print("The chamber is filled with glowing crystals.")
+        print("You gain insight and some experience.")
+        character['experience'] += 30
+        print(f"You gain 30 experience points. Total experience: {character['experience']}")
+
+def magical_portal(character):
+    portals = ['a realm of fire', 'a frozen wasteland', 'an underwater city', 'a celestial haven']
+    portal = random.choice(portals)
+    print(f"You step through the portal and find yourself in {portal}.")
+    if portal == 'a realm of fire':
+        print("You encounter fire elementals!")
+        combat(character)
+    elif portal == 'a frozen wasteland':
+        print("You find a frozen treasure chest.")
+        treasure(character)
+    elif portal == 'an underwater city':
+        print("You find ancient relics.")
+        character['inventory'].append("ancient relic")
+    elif portal == 'a celestial haven':
+        print("You are blessed with celestial guidance.")
+        character['experience'] += 100
+        print(f"You gain 100 experience points. Total experience: {character['experience']}")
