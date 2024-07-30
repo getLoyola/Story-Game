@@ -569,3 +569,73 @@ def sell_item(character):
         print(f"You sold {item} for {price} gold.")
     except (IndexError, ValueError):
         print("Invalid choice. You leave the market.")
+
+def mystical_market(character):
+    """
+    This function represents a visit to a mystical market where the player can buy and sell magical items.
+    """
+    print("You enter the mystical market. It is bustling with magical items and mysterious vendors.")
+    market_items = {
+        'potion of healing': 20,
+        'elixir of strength': 50,
+        'scroll of wisdom': 40,
+        'enchanted ring': 100,
+        'magic wand': 150
+    }
+    print("Items available for purchase:")
+    for idx, (item, price) in enumerate(market_items.items(), start=1):
+        print(f"{idx}. {item} - {price} gold")
+    
+    print("1. Buy an item")
+    print("2. Sell an item")
+    print("3. Leave the market")
+    choice = input("What would you like to do? (1/2/3): ")
+
+    if choice == '1':
+        buy_item(character, market_items)
+    elif choice == '2':
+        sell_item(character)
+    elif choice == '3':
+        print("You decide to leave the mystical market.")
+    else:
+        print("Invalid choice. You leave the market.")
+
+def buy_item(character, market_items):
+    print("Which item would you like to buy? (Enter number)")
+    choice = input()
+    try:
+        item = list(market_items.keys())[int(choice) - 1]
+        price = market_items[item]
+        if "gold" in character['inventory']:
+            gold_amount = int(character['inventory'][character['inventory'].index('gold')].split()[0])
+            if gold_amount >= price:
+                character['inventory'].remove('gold')
+                character['inventory'].append(item)
+                print(f"You bought {item} for {price} gold.")
+            else:
+                print("You don't have enough gold.")
+        else:
+            print("You don't have any gold.")
+    except (IndexError, ValueError):
+        print("Invalid choice. You leave the market.")
+
+def ancient_runes(character):
+    """
+    This function represents an interaction with ancient runes found in a mysterious location.
+    The runes can provide various benefits or challenges based on the player's choices.
+    """
+    print("You find yourself in front of an ancient set of runes, glowing with a mysterious light.")
+    print("The runes seem to offer various choices.")
+    print("1. Read the runes")
+    print("2. Touch the runes")
+    print("3. Leave the runes alone")
+    choice = input("What would you like to do? (1/2/3): ")
+
+    if choice == '1':
+        read_runes(character)
+    elif choice == '2':
+        touch_runes(character)
+    elif choice == '3':
+        print("You decide to leave the runes alone and move on.")
+    else:
+        print("Invalid choice. You leave the area.")
