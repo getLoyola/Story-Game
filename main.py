@@ -1082,3 +1082,54 @@ def explore_sanctuary(character):
     elif discovery == 'a mystical dragon scale':
         print("You find a mystical dragon scale.")
         character['inventory'].append('Mystical Dragon Scale')
+
+def cursed_tower(character):
+    """
+    This function represents an exploration of a cursed tower with various floors, each presenting unique challenges and rewards.
+    The player can choose to ascend the tower, solve floor-specific challenges, or find hidden secrets.
+    """
+    print("You enter the Cursed Tower, a towering structure shrouded in dark magic and mystery.")
+    print("1. Ascend the tower")
+    print("2. Solve a floor challenge")
+    print("3. Search for hidden secrets")
+    print("4. Leave the tower")
+    choice = input("What would you like to do? (1/2/3/4): ")
+
+    if choice == '1':
+        ascend_tower(character)
+    elif choice == '2':
+        solve_floor_challenge(character)
+    elif choice == '3':
+        search_secrets(character)
+    elif choice == '4':
+        print("You decide to leave the Cursed Tower.")
+    else:
+        print("Invalid choice. You leave the tower.")
+
+def ascend_tower(character):
+    floors = [
+        'Floor of Shadows',
+        'Floor of Flames',
+        'Floor of Ice',
+        'Floor of Echoes'
+    ]
+    floor = random.choice(floors)
+    print(f"You ascend to the {floor}.")
+    if floor == 'Floor of Shadows':
+        print("You face shadowy figures and must fight to proceed.")
+        # Placeholder for combat function
+        combat(character)
+    elif floor == 'Floor of Flames':
+        print("You must navigate through intense flames.")
+        if 'Fire Resistance' in character['inventory']:
+            print("You pass through the flames unharmed.")
+            character['experience'] += 50
+        else:
+            print("You take 20 damage from the flames.")
+            character['health'] = max(0, character['health'] - 20)
+    elif floor == 'Floor of Ice':
+        print("You must cross a slippery ice floor.")
+        if 'Ice Protection' in character['inventory']:
+            print("You cross the ice safely.")
+            character['experience'] += 50
+        else:
