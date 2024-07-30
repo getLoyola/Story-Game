@@ -1314,3 +1314,58 @@ def explore_ruins(character):
         print("You gain insight into the ruins’ history and lore.")
         character['experience'] += 30
 
+def enchanted_forest(character):
+    """
+    This function represents an exploration of the Enchanted Forest, a magical place full of mystical creatures,
+    hidden pathways, and ancient magic.
+    """
+    print("You step into the Enchanted Forest, a lush and vibrant place filled with magical energy.")
+    print("1. Interact with magical creatures")
+    print("2. Find a hidden pathway")
+    print("3. Discover ancient magic")
+    print("4. Leave the forest")
+    choice = input("What would you like to do? (1/2/3/4): ")
+
+    if choice == '1':
+        interact_creatures(character)
+    elif choice == '2':
+        find_pathway(character)
+    elif choice == '3':
+        discover_magic(character)
+    elif choice == '4':
+        print("You decide to leave the Enchanted Forest.")
+    else:
+        print("Invalid choice. You leave the forest.")
+
+def interact_creatures(character):
+    creatures = [
+        'a talking fox',
+        'a wise old owl',
+        'a mischievous sprite',
+        'a gentle unicorn'
+    ]
+    creature = random.choice(creatures)
+    print(f"You encounter {creature}.")
+    if creature == 'a talking fox':
+        print("The talking fox offers you a riddle.")
+        answer = input("Solve the riddle (type your answer): ")
+        if answer:
+            print("You solve the riddle!")
+            print("The fox rewards you with a magical charm.")
+            character['inventory'].append('Magical Charm')
+        else:
+            print("You fail to solve the riddle. The fox disappears.")
+    elif creature == 'a wise old owl':
+        print("The owl offers you wisdom.")
+        wisdom = random.choice(['Insight into a hidden path', 'Knowledge of an ancient spell'])
+        print(f"The owl imparts {wisdom}.")
+        character['inventory'].append(wisdom)
+    elif creature == 'a mischievous sprite':
+        print("The sprite plays a prank on you.")
+        print("You lose 10 experience points.")
+        character['experience'] = max(0, character['experience'] - 10)
+    elif creature == 'a gentle unicorn':
+        print("The unicorn grants you a blessing.")
+        print("You gain 30 experience points and a healing potion.")
+        character['experience'] += 30
+        character['inventory'].append('Healing Potion')
