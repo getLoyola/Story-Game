@@ -289,3 +289,54 @@ def magical_portal(character):
         print("You are blessed with celestial guidance.")
         character['experience'] += 100
         print(f"You gain 100 experience points. Total experience: {character['experience']}")
+
+def blacksmith(character):
+    print("You enter the blacksmith's shop.")
+    print("The blacksmith offers to upgrade your weapon for a price.")
+    if "gold" in character['inventory']:
+        print("1. Upgrade weapon (10 gold)")
+        print("2. Leave")
+        choice = input("What would you like to do? (1/2): ")
+        if choice == '1':
+            if any(item in character['inventory'] for item in ['sword', 'shield']):
+                character['inventory'].remove("gold")
+                print("Your weapon has been upgraded!")
+            else:
+                print("You don't have the required items to upgrade.")
+        elif choice == '2':
+            print("You leave the blacksmith's shop.")
+        else:
+            print("Invalid choice. You leave the blacksmith's shop.")
+    else:
+        print("You don't have any gold to upgrade your weapon.")
+
+def inn(character):
+    print("You enter the inn.")
+    print("The innkeeper offers you a room for the night.")
+    if "gold" in character['inventory']:
+        print("1. Stay the night (5 gold)")
+        print("2. Leave")
+        choice = input("What would you like to do? (1/2): ")
+        if choice == '1':
+            character['inventory'].remove("gold")
+            print("You stay the night and regain full health.")
+            character['health'] = 100
+        elif choice == '2':
+            print("You leave the inn.")
+        else:
+            print("Invalid choice. You leave the inn.")
+    else:
+        print("You don't have any gold to stay the night.")
+
+def check_inventory(character):
+    print("Inventory:")
+    for item in character['inventory']:
+        print(f"- {item}")
+    if not character['inventory']:
+        print("Your inventory is empty.")
+
+def rest(character):
+    print(f"{character['name']} rests and regains some health.")
+    character['health'] = min(100, character['health'] + 10)
+    print(f"Current health: {character['health']}")
+
