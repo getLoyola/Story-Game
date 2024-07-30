@@ -2125,3 +2125,85 @@ def search_passages(character):
         'a hidden chamber behind a painting',
         'a concealed door in the fireplace'
     ]
+
+
+    passage = random.choice(passages)
+    print(f"You discover {passage}.")
+    if passage == 'a secret room behind a bookshelf':
+        print("The room contains old artifacts.")
+        artifacts = ['Ancient Mirror', 'Old Lantern']
+        artifact = random.choice(artifacts)
+        character['inventory'].append(artifact)
+        print(f"You find an {artifact}.")
+    elif passage == 'an underground tunnel':
+        print("The tunnel leads to a hidden vault.")
+        print("You find a cache of gold and gain 60 experience points.")
+        character['gold'] = character.get('gold', 0) + 300
+        character['experience'] += 60
+    elif passage == 'a hidden chamber behind a painting':
+        print("The chamber holds a magical artifact.")
+        print("You gain 70 experience points and a rare artifact.")
+        character['experience'] += 70
+        character['inventory'].append('Magical Artifact')
+    elif passage == 'a concealed door in the fireplace':
+        print("The door leads to a room filled with ghostly treasures.")
+        print("You find a Ghostly Amulet and gain 50 experience points.")
+        character['experience'] += 50
+        character['inventory'].append('Ghostly Amulet')
+
+def communicate_spirits(character):
+    """
+    This function allows the player to communicate with spirits in the Haunted Mansion.
+    """
+    spirits = [
+        'a vengeful spirit',
+        'a helpful ghost',
+        'a lost soul',
+        'a mischievous poltergeist'
+    ]
+    spirit = random.choice(spirits)
+    print(f"You encounter {spirit}.")
+    if spirit == 'a vengeful spirit':
+        print("The spirit demands a sacrifice.")
+        print("You must make a choice: give up an item or face the consequences.")
+        # Placeholder for sacrifice decision
+        sacrifice_item(character)
+    elif spirit == 'a helpful ghost':
+        print("The ghost offers you guidance and a clue.")
+        print("You gain 40 experience points and a clue to the mansion’s secrets.")
+        character['experience'] += 40
+        character['inventory'].append('Clue')
+    elif spirit == 'a lost soul':
+        print("The soul seeks peace and offers a reward.")
+        print("You gain 50 experience points and a rare item.")
+        character['experience'] += 50
+        character['inventory'].append('Rare Item')
+    elif spirit == 'a mischievous poltergeist':
+        print("The poltergeist plays tricks on you.")
+        print("You lose 20 experience points but find a hidden cache of items.")
+        character['experience'] -= 20
+        items = ['Prank Box', 'Trick Item']
+        item = random.choice(items)
+        character['inventory'].append(item)
+        print(f"You find a {item}.")
+
+def sacrifice_item(character):
+    """
+    This function handles the decision-making process when dealing with a vengeful spirit.
+    """
+    print("Choose an item to sacrifice:")
+    for idx, item in enumerate(character['inventory']):
+        print(f"{idx + 1}. {item}")
+    choice = input("Enter the number of the item to sacrifice: ")
+    try:
+        item_index = int(choice) - 1
+        if 0 <= item_index < len(character['inventory']):
+            item = character['inventory'].pop(item_index)
+            print(f"You sacrifice the {item}.")
+            # Placeholder for consequences of sacrifice
+        else:
+            print("Invalid choice. The spirit grows angrier.")
+            # Placeholder for negative consequences
+    except ValueError:
+        print("Invalid input. The spirit grows angrier.")
+        # Placeholder for negative consequences
