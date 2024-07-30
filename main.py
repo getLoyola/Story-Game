@@ -1577,3 +1577,55 @@ def read_books(character):
         print("You gain insight into powerful spells.")
         print("You gain 50 experience points.")
         character['experience'] += 50
+
+def study_scrolls(character):
+    scrolls = [
+        'a scroll of healing',
+        'a scroll of fireball',
+        'a scroll of teleportation',
+        'a scroll of invisibility'
+    ]
+    scroll = random.choice(scrolls)
+    print(f"You study {scroll}.")
+    if scroll == 'a scroll of healing':
+        print("You learn the healing spell from the scroll.")
+        character['inventory'].append('Healing Spell')
+    elif scroll == 'a scroll of fireball':
+        print("You learn the fireball spell from the scroll.")
+        character['inventory'].append('Fireball Spell')
+    elif scroll == 'a scroll of teleportation':
+        print("You learn the teleportation spell from the scroll.")
+        character['inventory'].append('Teleportation Spell')
+    elif scroll == 'a scroll of invisibility':
+        print("You learn the invisibility spell from the scroll.")
+        character['inventory'].append('Invisibility Spell')
+
+def search_knowledge(character):
+    knowledge = [
+        'an ancient artifact',
+        'a hidden manuscript',
+        'a rare magical item',
+        'a forgotten spell'
+    ]
+    item = random.choice(knowledge)
+    print(f"You find {item}.")
+    if item == 'an ancient artifact':
+        print("The artifact is powerful and adds to your inventory.")
+        character['inventory'].append('Ancient Artifact')
+        print("You gain 60 experience points.")
+        character['experience'] += 60
+    elif item == 'a hidden manuscript':
+        print("The manuscript contains lost knowledge.")
+        character['inventory'].append('Hidden Manuscript')
+        print("You gain a new ability.")
+        character['abilities'].append('New Ability')
+    elif item == 'a rare magical item':
+        print("The item is rare and valuable.")
+        character['inventory'].append('Rare Magical Item')
+        print("You gain 50 experience points.")
+        character['experience'] += 50
+    elif item == 'a forgotten spell':
+        print("You learn a forgotten spell.")
+        spells = ['Ice Storm', 'Lightning Bolt', 'Earthquake']
+        spell = random.choice(spells)
+        character['inventory'].append(spell)
