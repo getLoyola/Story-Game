@@ -1805,3 +1805,61 @@ def explore_ruins(character):
         character['inventory'].append(item)
         character['abilities'].append('Enhanced Agility')
         print(f"You find a {item} and gain Enhanced Agility.")
+
+def enchanted_forest(character):
+    """
+    This function represents an exploration of the Enchanted Forest, a magical place filled with mystical creatures,
+    hidden paths, and ancient magic.
+    """
+    print("You enter the Enchanted Forest, a place where magic and mystery abound.")
+    print("1. Encounter mystical creatures")
+    print("2. Explore hidden paths")
+    print("3. Discover ancient magic")
+    print("4. Leave the forest")
+    choice = input("What would you like to do? (1/2/3/4): ")
+
+    if choice == '1':
+        encounter_mystical_creatures(character)
+    elif choice == '2':
+        explore_paths(character)
+    elif choice == '3':
+        discover_magic(character)
+    elif choice == '4':
+        print("You decide to leave the Enchanted Forest.")
+    else:
+        print("Invalid choice. You leave the forest.")
+
+def encounter_mystical_creatures(character):
+    """
+    This function handles encounters with mystical creatures in the Enchanted Forest.
+    """
+    creatures = [
+        'a unicorn',
+        'a griffin',
+        'a fairy',
+        'a dragon'
+    ]
+    creature = random.choice(creatures)
+    print(f"You encounter {creature}.")
+    if creature == 'a unicorn':
+        print("The unicorn is gentle and grants you a blessing.")
+        character['inventory'].append('Unicorn Horn')
+        print("You gain 30 experience points and a magical blessing.")
+        character['experience'] += 30
+        # Placeholder for magical blessing effects
+    elif creature == 'a griffin':
+        print("The griffin is majestic and offers guidance.")
+        print("You gain 50 experience points and a map to hidden places.")
+        character['experience'] += 50
+        character['inventory'].append('Griffin Map')
+    elif creature == 'a fairy':
+        print("The fairy offers you a choice of gifts.")
+        gifts = ['a potion of invisibility', 'a charm of strength', 'a scroll of wisdom']
+        gift = random.choice(gifts)
+        character['inventory'].append(gift)
+        print(f"You receive {gift}.")
+    elif creature == 'a dragon':
+        print("The dragon is powerful and fierce.")
+        print("You must defeat the dragon to continue.")
+        # Placeholder for combat function
+        combat(character)
