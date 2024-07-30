@@ -130,3 +130,59 @@ def encounter(character):
         starlight_clearing_encounter(character)
     else:
         general_encounter(character)
+
+def general_encounter(character):
+    encounters = ['nothing', 'an enemy', 'a treasure', 'an NPC', 'a hidden passage', 'a magical portal']
+    result = random.choice(encounters)
+    if result == 'nothing':
+        print("You find nothing of interest.")
+    elif result == 'an enemy':
+        print("You encounter an enemy!")
+        combat(character)
+    elif result == 'a treasure':
+        print("You find a treasure!")
+        treasure(character)
+    elif result == 'an NPC':
+        print("You meet a wandering NPC!")
+        npc_interaction(character)
+    elif result == 'a hidden passage':
+        print("You discover a hidden passage!")
+        hidden_passage(character)
+    elif result == 'a magical portal':
+        print("You find a magical portal!")
+        magical_portal(character)
+
+def combat(character):
+    enemy_health = random.randint(20, 50)
+    print(f"Enemy health: {enemy_health}")
+    while enemy_health > 0 and character['health'] > 0:
+        print(f"Your health: {character['health']}")
+        print("1. Attack")
+        print("2. Run")
+        action = input("What do you want to do? (1/2): ")
+        if action == '1':
+            damage = random.randint(5, 20)
+            enemy_health -= damage
+            print(f"You deal {damage} damage to the enemy.")
+            if enemy_health <= 0:
+                print("You defeated the enemy!")
+                character['experience'] += 50
+                print(f"You gain 50 experience points. Total experience: {character['experience']}")
+                return
+            enemy_damage = random.randint(5, 15)
+            character['health'] -= enemy_damage
+            print(f"The enemy deals {enemy_damage} damage to you.")
+            if character['health'] <= 0:
+                print("You have been defeated.")
+                return
+        elif action == '2':
+            print("You run away from the enemy.")
+            return
+        else:
+            print("Invalid action. The enemy attacks!")
+            enemy_damage = random.randint(5, 15)
+            character['health'] -= enemy_damage
+            print(f"The enemy deals {enemy_damage} damage to you.")
+            if character['health'] <= 0:
+                print("You have been defeated.")
+                return
