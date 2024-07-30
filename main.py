@@ -695,3 +695,86 @@ def touch_runes(character):
         character['experience'] += 100
         print(effect)
 
+def legendary_forge(character):
+    """
+    This function represents a visit to the legendary forge where players can enhance their equipment
+    with powerful enchantments, trade rare materials, or seek guidance from the forge master.
+    """
+    print("You arrive at the Legendary Forge, a place of immense power and craftsmanship.")
+    print("The forge master offers several services.")
+    print("1. Enchant an item")
+    print("2. Trade rare materials")
+    print("3. Seek guidance from the forge master")
+    print("4. Leave the forge")
+    choice = input("What would you like to do? (1/2/3/4): ")
+
+    if choice == '1':
+        enchant_item(character)
+    elif choice == '2':
+        trade_rare_materials(character)
+    elif choice == '3':
+        seek_guidance(character)
+    elif choice == '4':
+        print("You decide to leave the Legendary Forge.")
+    else:
+        print("Invalid choice. You leave the forge.")
+
+def enchant_item(character):
+    if not character['inventory']:
+        print("You have no items to enchant.")
+        return
+    print("Items available for enchantment:")
+    for idx, item in enumerate(character['inventory'], start=1):
+        print(f"{idx}. {item}")
+    print("Which item would you like to enchant? (Enter number)")
+    choice = input()
+    try:
+        item = character['inventory'][int(choice) - 1]
+        if item in ['sword', 'shield', 'armor']:
+            enchantments = ['Fire', 'Ice', 'Lightning', 'Earth']
+            enchantment = random.choice(enchantments)
+            print(f"Your {item} has been enchanted with {enchantment} power!")
+            character['inventory'].append(f"{item} (Enchanted with {enchantment})")
+            character['inventory'].remove(item)
+        else:
+            print("This item cannot be enchanted.")
+    except (IndexError, ValueError):
+        print("Invalid choice. You leave the forge.")
+
+def trade_rare_materials(character):
+    materials = ['dragon scale', 'phoenix feather', 'unicorn horn']
+    print("Materials available for trade:")
+    for idx, material in enumerate(materials, start=1):
+        print(f"{idx}. {material}")
+    print("Which material would you like to trade for? (Enter number)")
+    choice = input()
+    try:
+        material = materials[int(choice) - 1]
+        print(f"You receive a {material} in exchange for some of your inventory.")
+        character['inventory'].append(material)
+    except (IndexError, ValueError):
+        print("Invalid choice. You leave the forge.")
+
+def seek_guidance(character):
+    print("The forge master offers you wisdom and insight.")
+    guidance = [
+        "You gain 50 experience points.",
+        "You are given a special blueprint for an item.",
+        "You receive a hint about a hidden quest.",
+        "You are blessed with a temporary boost in health."
+    ]
+    advice = random.choice(guidance)
+    if advice == "You gain 50 experience points.":
+        character['experience'] += 50
+        print(advice)
+    elif advice == "You are given a special blueprint for an item.":
+        print("You receive a blueprint for a powerful item.")
+        character['inventory'].append("blueprint for a powerful item")
+    elif advice == "You receive a hint about a hidden quest.":
+        hidden_quest = "Defeat the legendary beast"
+        print(f"You receive a hint about a hidden quest: '{hidden_quest}'")
+        character['quests'].append(hidden_quest)
+    elif advice == "You are blessed with a temporary boost in health.":
+        character['health'] = min(100, character['health'] + 30)
+        print(advice)
+
