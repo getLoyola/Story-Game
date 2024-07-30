@@ -1203,3 +1203,57 @@ def search_secrets(character):
     elif secret == 'a hidden stash of gold':
         print("You find a hidden stash of gold!")
         character['inventory'].append('Gold')
+
+def ancient_ruins(character):
+    """
+    This function represents an exploration of the Ancient Ruins, where players can discover lost relics,
+    solve ancient puzzles, or interact with remnants of a long-lost civilization.
+    """
+    print("You enter the Ancient Ruins, a place filled with the remnants of a once-great civilization.")
+    print("1. Discover lost relics")
+    print("2. Solve an ancient puzzle")
+    print("3. Explore the ruins")
+    print("4. Leave the ruins")
+    choice = input("What would you like to do? (1/2/3/4): ")
+
+    if choice == '1':
+        discover_relics(character)
+    elif choice == '2':
+        solve_ancient_puzzle(character)
+    elif choice == '3':
+        explore_ruins(character)
+    elif choice == '4':
+        print("You decide to leave the Ancient Ruins.")
+    else:
+        print("Invalid choice. You leave the ruins.")
+
+def discover_relics(character):
+    relics = [
+        'an ancient sword',
+        'a mystical pendant',
+        'a golden chalice',
+        'a rare tome'
+    ]
+    relic = random.choice(relics)
+    print(f"You discover {relic}.")
+    if relic == 'an ancient sword':
+        print("The sword is old but still sharp. It adds to your inventory.")
+        character['inventory'].append('Ancient Sword')
+    elif relic == 'a mystical pendant':
+        print("The pendant glows with a strange light. It enhances your magical abilities.")
+        character['inventory'].append('Mystical Pendant')
+    elif relic == 'a golden chalice':
+        print("The chalice is ornate and valuable. It can be sold for a high price.")
+        character['inventory'].append('Golden Chalice')
+    elif relic == 'a rare tome':
+        print("The tome contains ancient knowledge. You gain 50 experience points.")
+        character['experience'] += 50
+        character['inventory'].append('Rare Tome')
+
+def solve_ancient_puzzle(character):
+    puzzles = [
+        'A puzzle involving ancient symbols',
+        'A complex mathematical problem',
+        'A logic riddle',
+        'A word game'
+    ]
