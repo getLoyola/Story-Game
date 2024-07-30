@@ -1257,3 +1257,60 @@ def solve_ancient_puzzle(character):
         'A logic riddle',
         'A word game'
     ]
+        puzzle = random.choice(puzzles)
+    print(f"You encounter an ancient puzzle: {puzzle}")
+    answer = input("Solve the puzzle (type your answer): ")
+    if answer:
+        print("You solve the puzzle successfully!")
+        reward = random.choice(["You find a hidden relic.", "You gain 40 experience points.", "You discover a new spell."])
+        if reward == "You find a hidden relic.":
+            relics = ['Ancient Shield', 'Enchanted Dagger', 'Mystic Robe']
+            relic = random.choice(relics)
+            character['inventory'].append(relic)
+            print(f"You find a {relic}.")
+        elif reward == "You gain 40 experience points.":
+            character['experience'] += 40
+            print(reward)
+        elif reward == "You discover a new spell.":
+            spells = ['Fireball', 'Frostbolt', 'Lightning Strike']
+            spell = random.choice(spells)
+            character['inventory'].append(spell)
+            print(f"You discover a new spell: {spell}.")
+    else:
+        print("You fail to solve the puzzle and are forced to leave the ruins.")
+
+def explore_ruins(character):
+    explorations = [
+        'a hidden chamber with treasures',
+        'an ancient altar with mysterious runes',
+        'a secret passage leading to a forgotten crypt',
+        'a well-preserved mural depicting ancient history'
+    ]
+    exploration = random.choice(explorations)
+    print(f"While exploring, you find {exploration}.")
+    if exploration == 'a hidden chamber with treasures':
+        print("You find a hidden chamber filled with treasures!")
+        treasure(character)
+    elif exploration == 'an ancient altar with mysterious runes':
+        print("The altar holds mysterious runes that you can study.")
+        runes = [
+            'Runes of Strength',
+            'Runes of Wisdom',
+            'Runes of Agility',
+            'Runes of Protection'
+        ]
+        rune = random.choice(runes)
+        print(f"You study the {rune}.")
+        character['inventory'].append(rune)
+    elif exploration == 'a secret passage leading to a forgotten crypt':
+        print("The passage leads to a forgotten crypt with ancient secrets.")
+        print("You find a powerful artifact in the crypt.")
+        artifacts = ['Ancient Crown', 'Cursed Amulet', 'Mystic Staff']
+        artifact = random.choice(artifacts)
+        character['inventory'].append(artifact)
+        print(f"You find a {artifact}.")
+    elif exploration == 'a well-preserved mural depicting ancient history':
+        print("The mural depicts the history of the ancient civilization.")
+        print("You gain insight into the ruins’ history and lore.")
+        character['experience'] += 30
+
