@@ -973,3 +973,47 @@ def search_treasures(character):
         character['inventory'].append("ancient scroll")
         print("You find an ancient scroll.")
 
+def dragon_sanctuary(character):
+    """
+    This function represents a visit to the Dragon Sanctuary, where players can encounter dragons,
+    seek powerful allies, or face dangerous trials.
+    """
+    print("You arrive at the Dragon Sanctuary, a majestic place filled with ancient dragons and mystical energy.")
+    print("1. Seek a dragon ally")
+    print("2. Face a dragon trial")
+    print("3. Explore the sanctuary")
+    print("4. Leave the sanctuary")
+    choice = input("What would you like to do? (1/2/3/4): ")
+
+    if choice == '1':
+        seek_dragon_ally(character)
+    elif choice == '2':
+        face_dragon_trial(character)
+    elif choice == '3':
+        explore_sanctuary(character)
+    elif choice == '4':
+        print("You decide to leave the Dragon Sanctuary.")
+    else:
+        print("Invalid choice. You leave the sanctuary.")
+
+def seek_dragon_ally(character):
+    dragons = [
+        'Fire Dragon',
+        'Ice Dragon',
+        'Earth Dragon',
+        'Lightning Dragon'
+    ]
+    dragon = random.choice(dragons)
+    print(f"You seek out the {dragon}.")
+    if dragon == 'Fire Dragon':
+        print("The Fire Dragon agrees to aid you in battle.")
+        character['allies'].append('Fire Dragon')
+    elif dragon == 'Ice Dragon':
+        print("The Ice Dragon offers you a powerful ice spell.")
+        character['inventory'].append('Ice Spell')
+    elif dragon == 'Earth Dragon':
+        print("The Earth Dragon grants you enhanced strength.")
+        character['strength'] = character.get('strength', 0) + 20
+    elif dragon == 'Lightning Dragon':
+        print("The Lightning Dragon provides you with a lightning-infused weapon.")
+        character['inventory'].append('Lightning Sword')
