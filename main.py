@@ -1419,3 +1419,57 @@ def discover_magic(character):
     elif magic == 'a magical staff':
         print("The staff is imbued with magical properties.")
         character['inventory'].append('Magical Staff')
+
+def mysterious_cave(character):
+    """
+    This function represents an exploration of the Mysterious Cave, a dark and enigmatic place full of secrets,
+    hidden dangers, and ancient treasures.
+    """
+    print("You enter the Mysterious Cave, a place shrouded in darkness and mystery.")
+    print("1. Search for hidden treasures")
+    print("2. Solve a cave riddle")
+    print("3. Encounter cave creatures")
+    print("4. Leave the cave")
+    choice = input("What would you like to do? (1/2/3/4): ")
+
+    if choice == '1':
+        search_treasures(character)
+    elif choice == '2':
+        solve_cave_riddle(character)
+    elif choice == '3':
+        encounter_creatures(character)
+    elif choice == '4':
+        print("You decide to leave the Mysterious Cave.")
+    else:
+        print("Invalid choice. You leave the cave.")
+
+def search_treasures(character):
+    treasures = [
+        'a chest of gold coins',
+        'a mystical gem',
+        'an ancient relic',
+        'a rare artifact'
+    ]
+    treasure = random.choice(treasures)
+    print(f"You find {treasure}.")
+    if treasure == 'a chest of gold coins':
+        print("The chest contains a large amount of gold.")
+        character['inventory'].append('Gold Coins')
+        print("You gain 100 gold coins.")
+        # Placeholder for currency handling
+        character['gold'] = character.get('gold', 0) + 100
+    elif treasure == 'a mystical gem':
+        print("The gem glows with a magical light.")
+        character['inventory'].append('Mystical Gem')
+        print("The gem may have magical properties.")
+    elif treasure == 'an ancient relic':
+        print("The relic is old and valuable.")
+        character['inventory'].append('Ancient Relic')
+        print("You gain 50 experience points.")
+        character['experience'] += 50
+    elif treasure == 'a rare artifact':
+        print("The artifact is rare and powerful.")
+        character['inventory'].append('Rare Artifact')
+        print("You gain a special ability from the artifact.")
+        # Placeholder for special abilities
+        character['abilities'].append('Special Ability')
