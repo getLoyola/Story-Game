@@ -639,3 +639,59 @@ def ancient_runes(character):
         print("You decide to leave the runes alone and move on.")
     else:
         print("Invalid choice. You leave the area.")
+
+
+def read_runes(character):
+    print("You study the runes carefully. They start to reveal a hidden message.")
+    outcomes = [
+        "You gain 50 experience points.",
+        "You find a hidden treasure chest.",
+        "You are cursed with a temporary weakness.",
+        "You discover a secret quest."
+    ]
+    result = random.choice(outcomes)
+    if result == "You gain 50 experience points.":
+        character['experience'] += 50
+        print(result)
+    elif result == "You find a hidden treasure chest.":
+        treasure(character)
+    elif result == "You are cursed with a temporary weakness.":
+        character['health'] -= 20
+        print(result)
+        print(f"Current health: {character['health']}")
+    elif result == "You discover a secret quest.":
+        new_quest(character)
+        print(result)
+
+def touch_runes(character):
+    print("You touch the runes and they start to glow intensely.")
+    print("Suddenly, you feel a surge of energy.")
+    effects = [
+        "You gain 20 health points.",
+        "You are teleported to a random location.",
+        "You receive a magical item.",
+        "You gain 100 experience points."
+    ]
+    effect = random.choice(effects)
+    if effect == "You gain 20 health points.":
+        character['health'] = min(100, character['health'] + 20)
+        print(effect)
+    elif effect == "You are teleported to a random location.":
+        locations = ['Dark Forest', 'Shadow Cave', 'Crypt']
+        location = random.choice(locations)
+        print(f"You are teleported to the {location}.")
+        if location == 'Dark Forest':
+            dark_forest_encounter(character)
+        elif location == 'Shadow Cave':
+            shadow_cave_encounter(character)
+        elif location == 'Crypt':
+            crypt_encounter(character)
+    elif effect == "You receive a magical item.":
+        magical_items = ['ancient scroll', 'enchanted sword', 'mystical gem']
+        item = random.choice(magical_items)
+        character['inventory'].append(item)
+        print(f"You receive a {item}.")
+    elif effect == "You gain 100 experience points.":
+        character['experience'] += 100
+        print(effect)
+
