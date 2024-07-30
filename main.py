@@ -877,3 +877,55 @@ def interact_creatures(character):
         print("The spirit guides you to a hidden treasure.")
         treasure(character)
 
+def hidden_labyrinth(character):
+    """
+    This function represents an exploration of a hidden labyrinth with various challenges and rewards.
+    The player can choose to navigate the labyrinth, solve puzzles, or find hidden treasures.
+    """
+    print("You enter the Hidden Labyrinth, a maze of twisting corridors and dark passages.")
+    print("1. Navigate the labyrinth")
+    print("2. Solve a puzzle")
+    print("3. Search for hidden treasures")
+    print("4. Leave the labyrinth")
+    choice = input("What would you like to do? (1/2/3/4): ")
+
+    if choice == '1':
+        navigate_labyrinth(character)
+    elif choice == '2':
+        solve_puzzle(character)
+    elif choice == '3':
+        search_treasures(character)
+    elif choice == '4':
+        print("You decide to leave the Hidden Labyrinth.")
+    else:
+        print("Invalid choice. You leave the labyrinth.")
+
+def navigate_labyrinth(character):
+    outcomes = [
+        "You find a shortcut and gain 50 experience points.",
+        "You encounter a wandering monster and lose 20 health points.",
+        "You get lost and spend extra time, gaining 10 experience points.",
+        "You find a helpful guide who offers you a clue."
+    ]
+    result = random.choice(outcomes)
+    if result == "You find a shortcut and gain 50 experience points.":
+        character['experience'] += 50
+        print(result)
+    elif result == "You encounter a wandering monster and lose 20 health points.":
+        character['health'] = max(0, character['health'] - 20)
+        print(result)
+        print(f"Current health: {character['health']}")
+    elif result == "You get lost and spend extra time, gaining 10 experience points.":
+        character['experience'] += 10
+        print(result)
+    elif result == "You find a helpful guide who offers you a clue.":
+        print("The guide tells you about a secret exit.")
+        character['quests'].append("Find the secret exit of the labyrinth")
+
+def solve_puzzle(character):
+    puzzles = [
+        "A riddle about a hidden passage",
+        "A mathematical puzzle",
+        "A logic challenge",
+        "A memory test"
+    ]
