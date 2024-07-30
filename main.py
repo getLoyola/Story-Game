@@ -1629,3 +1629,56 @@ def search_knowledge(character):
         spells = ['Ice Storm', 'Lightning Bolt', 'Earthquake']
         spell = random.choice(spells)
         character['inventory'].append(spell)
+
+def shadow_lair(character):
+    """
+    This function represents an exploration of the Shadow Lair, a dark and foreboding place inhabited by shadowy
+    creatures and filled with hidden dangers.
+    """
+    print("You enter the Shadow Lair, a place shrouded in darkness and mystery.")
+    print("1. Confront shadow creatures")
+    print("2. Search for hidden traps")
+    print("3. Find a lost artifact")
+    print("4. Leave the lair")
+    choice = input("What would you like to do? (1/2/3/4): ")
+
+    if choice == '1':
+        confront_creatures(character)
+    elif choice == '2':
+        search_traps(character)
+    elif choice == '3':
+        find_artifact(character)
+    elif choice == '4':
+        print("You decide to leave the Shadow Lair.")
+    else:
+        print("Invalid choice. You leave the lair.")
+
+def confront_creatures(character):
+    creatures = [
+        'a shadow demon',
+        'a wraith',
+        'a dark knight',
+        'a shadow hound'
+    ]
+    creature = random.choice(creatures)
+    print(f"You encounter {creature}.")
+    if creature == 'a shadow demon':
+        print("The shadow demon is a powerful foe!")
+        print("Prepare for a tough battle.")
+        # Placeholder for combat function
+        combat(character)
+    elif creature == 'a wraith':
+        print("The wraith moves silently and strikes from the shadows.")
+        print("You defeat the wraith and gain 30 experience points.")
+        character['experience'] += 30
+    elif creature == 'a dark knight':
+        print("The dark knight challenges you to a duel.")
+        print("You manage to defeat the dark knight and gain 50 experience points.")
+        character['experience'] += 50
+    elif creature == 'a shadow hound':
+        print("The shadow hound attacks swiftly.")
+        print("You successfully fend off the hound and find a hidden cache of items.")
+        items = ['Shadow Cloak', 'Phantom Dagger', 'Night Vision Amulet']
+        item = random.choice(items)
+        character['inventory'].append(item)
+        print(f"You find a {item}.")
