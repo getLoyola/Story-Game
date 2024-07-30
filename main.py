@@ -929,3 +929,47 @@ def solve_puzzle(character):
         "A logic challenge",
         "A memory test"
     ]
+
+    puzzle = random.choice(puzzles)
+    print(f"You encounter a puzzle: {puzzle}")
+    answer = input("Solve the puzzle (type your answer): ")
+    # For simplicity, consider any answer correct
+    if answer:
+        print("You solve the puzzle successfully!")
+        reward = random.choice(["You find a hidden key.", "You gain 40 experience points.", "You receive a magical item."])
+        if reward == "You find a hidden key.":
+            character['inventory'].append("hidden key")
+            print(reward)
+        elif reward == "You gain 40 experience points.":
+            character['experience'] += 40
+            print(reward)
+        elif reward == "You receive a magical item.":
+            magical_items = ['crystal shard', 'mystic cloak', 'enchanted boots']
+            item = random.choice(magical_items)
+            character['inventory'].append(item)
+            print(f"{reward} {item} has been added to your inventory.")
+    else:
+        print("You fail to solve the puzzle and are forced to leave the area.")
+
+def search_treasures(character):
+    treasures = [
+        "a chest full of gold",
+        "a magical artifact",
+        "a rare gem",
+        "an ancient scroll"
+    ]
+    treasure = random.choice(treasures)
+    print(f"You find {treasure}.")
+    if treasure == "a chest full of gold":
+        character['inventory'].append("gold")
+        print("You gain 100 gold.")
+    elif treasure == "a magical artifact":
+        character['inventory'].append("magical artifact")
+        print("You find a magical artifact.")
+    elif treasure == "a rare gem":
+        character['inventory'].append("rare gem")
+        print("You find a rare gem.")
+    elif treasure == "an ancient scroll":
+        character['inventory'].append("ancient scroll")
+        print("You find an ancient scroll.")
+
