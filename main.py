@@ -452,3 +452,48 @@ def lost_city_encounter(character):
         character['inventory'].append("ancient writings")
     else:
         print("Invalid choice. You leave the Lost City.")
+
+def ancient_temple_encounter(character):
+    print("You enter the Ancient Temple.")
+    print("1. Offer a sacrifice")
+    print("2. Search for relics")
+    choice = input("What would you like to do? (1/2): ")
+    if choice == '1':
+        print("You make an offering and gain some blessings.")
+        character['experience'] += 20
+        print(f"You gain 20 experience points. Total experience: {character['experience']}")
+    elif choice == '2':
+        print("You find an ancient relic.")
+        character['inventory'].append("ancient relic")
+    else:
+        print("Invalid choice. You leave the Ancient Temple.")
+
+def sacred_grove_encounter(character):
+    print("You enter the Sacred Grove.")
+    print("1. Commune with nature")
+    print("2. Explore the grove")
+    choice = input("What would you like to do? (1/2): ")
+    if choice == '1':
+        print("You gain wisdom and some experience.")
+        character['experience'] += 30
+        print(f"You gain 30 experience points. Total experience: {character['experience']}")
+    elif choice == '2':
+        print("You find a hidden glade.")
+        character['inventory'].append("mystical herb")
+    else:
+        print("Invalid choice. You leave the Sacred Grove.")
+
+def starlight_clearing_encounter(character):
+    print("You reach the Starlight Clearing.")
+    print("1. Stare at the stars")
+    print("2. Look for hidden secrets")
+    choice = input("What would you like to do? (1/2): ")
+    if choice == '1':
+        print("You gain insight from the stars.")
+        character['experience'] += 50
+        print(f"You gain 50 experience points. Total experience: {character['experience']}")
+    elif choice == '2':
+        print("You find a celestial artifact.")
+        character['inventory'].append("celestial artifact")
+    else:
+        print("Invalid choice. You leave the Starlight Clearing.")
