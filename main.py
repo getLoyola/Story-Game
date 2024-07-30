@@ -1863,3 +1863,78 @@ def encounter_mystical_creatures(character):
         print("You must defeat the dragon to continue.")
         # Placeholder for combat function
         combat(character)
+
+def explore_paths(character):
+    """
+    This function allows the player to explore hidden paths in the Enchanted Forest.
+    """
+    paths = [
+        'a hidden glade',
+        'a magical spring',
+        'a forgotten grove',
+        'an ancient tree'
+    ]
+    path = random.choice(paths)
+    print(f"You discover {path}.")
+    if path == 'a hidden glade':
+        print("The glade is peaceful and filled with rare herbs.")
+        print("You find herbs for healing.")
+        character['inventory'].append('Healing Herbs')
+        print("You gain 20 experience points.")
+        character['experience'] += 20
+    elif path == 'a magical spring':
+        print("The spring has magical properties.")
+        print("You drink from the spring and gain 50 experience points.")
+        character['experience'] += 50
+        character['gold'] = character.get('gold', 0) + 50
+    elif path == 'a forgotten grove':
+        print("The grove is ancient and holds hidden knowledge.")
+        print("You gain 40 experience points and a new spell.")
+        character['experience'] += 40
+        spells = ['Nature’s Blessing', 'Healing Wave', 'Bark Skin']
+        spell = random.choice(spells)
+        character['inventory'].append(spell)
+    elif path == 'an ancient tree':
+        print("The tree is wise and offers you advice.")
+        print("You gain 30 experience points and a magical item.")
+        character['experience'] += 30
+        items = ['Enchanted Ring', 'Mystic Pendant']
+        item = random.choice(items)
+        character['inventory'].append(item)
+
+def discover_magic(character):
+    """
+    This function allows the player to discover ancient magic hidden in the Enchanted Forest.
+    """
+    magic_items = [
+        'a staff of light',
+        'a tome of ancient spells',
+        'a crystal orb',
+        'a magical cloak'
+    ]
+    item = random.choice(magic_items)
+    print(f"You find {item}.")
+    if item == 'a staff of light':
+        print("The staff glows with pure light.")
+        character['inventory'].append('Staff of Light')
+        print("You gain 60 experience points and a new light-based spell.")
+        character['experience'] += 60
+        character['inventory'].append('Light Beam Spell')
+    elif item == 'a tome of ancient spells':
+        print("The tome is filled with powerful spells.")
+        character['inventory'].append('Tome of Spells')
+        print("You gain 70 experience points and learn a new spell.")
+        character['experience'] += 70
+        spells = ['Fire Storm', 'Ice Barrier', 'Wind Fury']
+        spell = random.choice(spells)
+        character['inventory'].append(spell)
+    elif item == 'a crystal orb':
+        print("The orb shows glimpses of the future.")
+        character['inventory'].append('Crystal Orb')
+        print("You gain 50 experience points and insight into future events.")
+        character['experience'] += 50
+    elif item == 'a magical cloak':
+        print("The cloak provides invisibility.")
+        character['inventory'].append('Magical Cloak')
+        print("You gain 40 experience points and the ability to become invisible for a short time.")
+        character['experience'] += 40
