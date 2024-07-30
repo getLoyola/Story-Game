@@ -1473,3 +1473,57 @@ def search_treasures(character):
         print("You gain a special ability from the artifact.")
         # Placeholder for special abilities
         character['abilities'].append('Special Ability')
+
+
+def solve_cave_riddle(character):
+    riddles = [
+        'I speak without a mouth and hear without ears. I have nobody, but I come alive with the wind. What am I?',
+        'I’m not alive, but I grow; I don’t have lungs, but I need air; I don’t have a mouth, but water kills me. What am I?',
+        'The more of this there is, the less you see. What is it?',
+        'I can be cracked, made, told, and played. What am I?'
+    ]
+    riddle = random.choice(riddles)
+    print(f"You encounter a riddle: {riddle}")
+    answer = input("Solve the riddle (type your answer): ")
+    if answer:
+        print("You solve the riddle!")
+        reward = random.choice(["You find a hidden treasure.", "You gain 40 experience points.", "You discover a new spell."])
+        if reward == "You find a hidden treasure.":
+            search_treasures(character)
+        elif reward == "You gain 40 experience points.":
+            character['experience'] += 40
+            print(reward)
+        elif reward == "You discover a new spell.":
+            spells = ['Heal', 'Teleport', 'Shield']
+            spell = random.choice(spells)
+            character['inventory'].append(spell)
+            print(f"You discover a new spell: {spell}.")
+    else:
+        print("You fail to solve the riddle and are forced to leave the cave.")
+
+def encounter_creatures(character):
+    creatures = [
+        'a cave troll',
+        'a giant spider',
+        'a swarm of bats',
+        'a rock golem'
+    ]
+    creature = random.choice(creatures)
+    print(f"You encounter {creature}.")
+    if creature == 'a cave troll':
+        print("The cave troll is aggressive. Prepare for battle!")
+        # Placeholder for combat function
+        combat(character)
+    elif creature == 'a giant spider':
+        print("The giant spider attacks from above!")
+        # Placeholder for combat function
+        combat(character)
+    elif creature == 'a swarm of bats':
+        print("The bats are numerous and disorienting.")
+        print("You lose 10 experience points due to their distraction.")
+        character['experience'] = max(0, character['experience'] - 10)
+    elif creature == 'a rock golem':
+        print("The rock golem is powerful and slow.")
+        print("You manage to defeat it and gain 50 experience points.")
+        character['experience'] += 50
+
