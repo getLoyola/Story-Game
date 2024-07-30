@@ -1017,3 +1017,68 @@ def seek_dragon_ally(character):
     elif dragon == 'Lightning Dragon':
         print("The Lightning Dragon provides you with a lightning-infused weapon.")
         character['inventory'].append('Lightning Sword')
+
+def face_dragon_trial(character):
+    trials = [
+        'Trial of Fire',
+        'Trial of Ice',
+        'Trial of Earth',
+        'Trial of Lightning'
+    ]
+    trial = random.choice(trials)
+    print(f"You face the {trial}.")
+    if trial == 'Trial of Fire':
+        if 'Fire Resistance' in character['inventory']:
+            print("You successfully pass the Trial of Fire with your Fire Resistance.")
+            character['experience'] += 50
+        else:
+            print("You fail the Trial of Fire and take 30 damage.")
+            character['health'] = max(0, character['health'] - 30)
+    elif trial == 'Trial of Ice':
+        if 'Ice Protection' in character['inventory']:
+            print("You successfully pass the Trial of Ice with your Ice Protection.")
+            character['experience'] += 50
+        else:
+            print("You fail the Trial of Ice and take 30 damage.")
+            character['health'] = max(0, character['health'] - 30)
+    elif trial == 'Trial of Earth':
+        print("You successfully pass the Trial of Earth and gain a strength boost.")
+        character['strength'] = character.get('strength', 0) + 20
+        character['experience'] += 50
+    elif trial == 'Trial of Lightning':
+        if 'Lightning Shield' in character['inventory']:
+            print("You successfully pass the Trial of Lightning with your Lightning Shield.")
+            character['experience'] += 50
+        else:
+            print("You fail the Trial of Lightning and take 30 damage.")
+            character['health'] = max(0, character['health'] - 30)
+
+def explore_sanctuary(character):
+    discoveries = [
+        'a hidden dragon egg',
+        'a secret chamber with treasure',
+        'an ancient dragon tome',
+        'a mystical dragon scale'
+    ]
+    discovery = random.choice(discoveries)
+    print(f"While exploring, you find {discovery}.")
+    if discovery == 'a hidden dragon egg':
+        print("You find a hidden dragon egg and can choose to keep it or leave it.")
+        print("1. Keep the egg")
+        print("2. Leave the egg")
+        choice = input("What would you like to do? (1/2): ")
+        if choice == '1':
+            character['inventory'].append('Dragon Egg')
+            print("You keep the dragon egg.")
+        elif choice == '2':
+            print("You leave the dragon egg behind.")
+    elif discovery == 'a secret chamber with treasure':
+        print("You find a secret chamber filled with treasure!")
+        treasure(character)
+    elif discovery == 'an ancient dragon tome':
+        print("You find an ancient dragon tome and gain knowledge.")
+        character['experience'] += 30
+        character['inventory'].append('Dragon Tome')
+    elif discovery == 'a mystical dragon scale':
+        print("You find a mystical dragon scale.")
+        character['inventory'].append('Mystical Dragon Scale')
