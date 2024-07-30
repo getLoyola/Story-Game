@@ -1682,3 +1682,62 @@ def confront_creatures(character):
         item = random.choice(items)
         character['inventory'].append(item)
         print(f"You find a {item}.")
+
+
+def search_traps(character):
+    traps = [
+        'a pitfall trap',
+        'a spike trap',
+        'a magical rune trap',
+        'a poison gas trap'
+    ]
+    trap = random.choice(traps)
+    print(f"You find {trap}.")
+    if trap == 'a pitfall trap':
+        print("You manage to avoid the pitfall trap.")
+        print("You gain 20 experience points for your agility.")
+        character['experience'] += 20
+    elif trap == 'a spike trap':
+        print("You carefully disarm the spike trap.")
+        print("You gain 30 experience points for your skill.")
+        character['experience'] += 30
+    elif trap == 'a magical rune trap':
+        print("You decipher the runes and avoid the trap.")
+        print("You find a magical rune and add it to your inventory.")
+        character['inventory'].append('Magical Rune')
+    elif trap == 'a poison gas trap':
+        print("You quickly neutralize the poison gas.")
+        print("You gain 40 experience points for your quick thinking.")
+        character['experience'] += 40
+
+def find_artifact(character):
+    artifacts = [
+        'a cursed relic',
+        'an ancient tome',
+        'a shadow gem',
+        'a powerful staff'
+    ]
+    artifact = random.choice(artifacts)
+    print(f"You find {artifact}.")
+    if artifact == 'a cursed relic':
+        print("The relic is cursed but valuable.")
+        character['inventory'].append('Cursed Relic')
+        print("You gain 30 experience points but suffer a minor curse.")
+        character['experience'] += 30
+        # Placeholder for minor curse effects
+    elif artifact == 'an ancient tome':
+        print("The tome contains ancient knowledge.")
+        character['inventory'].append('Ancient Tome')
+        print("You gain 50 experience points from the knowledge.")
+        character['experience'] += 50
+    elif artifact == 'a shadow gem':
+        print("The shadow gem pulses with dark energy.")
+        character['inventory'].append('Shadow Gem')
+        print("You gain 40 experience points.")
+        character['experience'] += 40
+    elif artifact == 'a powerful staff':
+        print("The staff radiates immense power.")
+        character['inventory'].append('Powerful Staff')
+        print("You gain 60 experience points and a new magical ability.")
+        character['experience'] += 60
+        character['abilities'].append('New Magical Ability')
