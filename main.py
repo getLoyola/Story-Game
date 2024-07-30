@@ -186,3 +186,57 @@ def combat(character):
             if character['health'] <= 0:
                 print("You have been defeated.")
                 return
+
+def treasure(character):
+    treasures = ['gold', 'a magical item', 'a health potion', 'a powerful artifact', 'a rare gem']
+    found = random.choice(treasures)
+    print(f"You found {found}!")
+    if found == 'gold':
+        amount = random.randint(10, 100)
+        character['inventory'].append(f"{amount} gold")
+    elif found == 'a magical item':
+        character['inventory'].append("magical item")
+    elif found == 'a health potion':
+        character['inventory'].append("health potion")
+    elif found == 'a powerful artifact':
+        character['inventory'].append("powerful artifact")
+    elif found == 'a rare gem':
+        character['inventory'].append("rare gem")
+
+def npc_interaction(character):
+    npcs = ['A wandering merchant', 'A wise old sage', 'A mysterious stranger', 'A lost child', 'An old friend']
+    npc = random.choice(npcs)
+    print(f"You meet {npc}.")
+    if npc == 'A wandering merchant':
+        print("The merchant offers you a trade.")
+        trade(character)
+    elif npc == 'A wise old sage':
+        print("The sage offers you a quest.")
+        new_quest(character)
+    elif npc == 'A mysterious stranger':
+        print("The stranger shares a cryptic message with you.")
+    elif npc == 'A lost child':
+        print("You help the child find their way home.")
+        help_child(character)
+    elif npc == 'An old friend':
+        print("You reunite with an old friend who shares valuable information.")
+
+def trade(character):
+    items = ['a potion', 'a map', 'an enchanted ring', 'a scroll']
+    print("Items for sale:")
+    for idx, item in enumerate(items, start=1):
+        print(f"{idx}. {item}")
+    choice = input("What would you like to buy? (enter number or 0 to cancel): ")
+    try:
+        if int(choice) == 0:
+            print("You decide not to buy anything.")
+            return
+        item = items[int(choice) - 1]
+        if 'gold' in character['inventory']:
+            print(f"You buy {item}.")
+            character['inventory'].append(item)
+            character['inventory'].remove('gold')
+        else:
+            print("You don't have enough gold.")
+    except (IndexError, ValueError):
+        print("Invalid choice. The merchant leaves.")
