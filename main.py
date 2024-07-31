@@ -2207,3 +2207,60 @@ def sacrifice_item(character):
     except ValueError:
         print("Invalid input. The spirit grows angrier.")
         # Placeholder for negative consequences
+
+def lost_city(character):
+    """
+    This function represents an exploration of the Lost City, a mysterious and ancient place filled with ruins,
+    puzzles, and hidden treasures.
+    """
+    print("You arrive at the Lost City, a place shrouded in legend and mystery.")
+    print("1. Solve ancient puzzles")
+    print("2. Explore the ruins")
+    print("3. Search for hidden treasures")
+    print("4. Leave the city")
+    choice = input("What would you like to do? (1/2/3/4): ")
+
+    if choice == '1':
+        solve_puzzles(character)
+    elif choice == '2':
+        explore_ruins(character)
+    elif choice == '3':
+        search_treasures(character)
+    elif choice == '4':
+        print("You decide to leave the Lost City.")
+    else:
+        print("Invalid choice. You leave the city.")
+
+def solve_puzzles(character):
+    """
+    This function handles solving ancient puzzles within the Lost City.
+    """
+    puzzles = [
+        'a riddle of the ancients',
+        'a sliding tile puzzle',
+        'a code to decipher',
+        'a hidden lever puzzle'
+    ]
+    puzzle = random.choice(puzzles)
+    print(f"You encounter {puzzle}.")
+    if puzzle == 'a riddle of the ancients':
+        print("You solve the riddle and gain 40 experience points.")
+        character['experience'] += 40
+        print("You find a hidden passage behind the puzzle.")
+        character['inventory'].append('Ancient Key')
+    elif puzzle == 'a sliding tile puzzle':
+        print("You complete the sliding tile puzzle.")
+        print("You gain 30 experience points and find a small treasure.")
+        character['experience'] += 30
+        character['inventory'].append('Small Treasure')
+    elif puzzle == 'a code to decipher':
+        print("You decipher the code and gain 50 experience points.")
+        print("You find a map with hidden locations marked on it.")
+        character['experience'] += 50
+        character['inventory'].append('Hidden Locations Map')
+    elif puzzle == 'a hidden lever puzzle':
+        print("You discover and pull the hidden lever.")
+        print("You gain 35 experience points and a magical item.")
+        character['experience'] += 35
+        character['inventory'].append('Magical Item')
+
