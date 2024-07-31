@@ -2594,3 +2594,85 @@ def collect_artifacts(character):
         print("You gain 40 experience points and the Necklace of Wisdom.")
         character['experience'] += 40
         character['inventory'].append('Necklace of Wisdom')
+
+def dragon_cave(character):
+    """
+    This function represents an exploration of the Dragon's Cave, a dangerous place filled with treasure and a powerful dragon.
+    The player can choose to confront the dragon, sneak past it, or try to steal some treasure.
+    """
+    print("You approach the Dragon's Cave, a dark and foreboding place.")
+    print("1. Confront the dragon")
+    print("2. Sneak past the dragon")
+    print("3. Steal some treasure")
+    print("4. Leave the cave")
+    choice = input("What would you like to do? (1/2/3/4): ")
+
+    if choice == '1':
+        confront_dragon(character)
+    elif choice == '2':
+        sneak_past_dragon(character)
+    elif choice == '3':
+        steal_treasure(character)
+    elif choice == '4':
+        print("You decide to leave the Dragon's Cave.")
+    else:
+        print("Invalid choice. You leave the cave.")
+
+def confront_dragon(character):
+    """
+    This function handles the confrontation with the dragon in the Dragon's Cave.
+    """
+    print("You bravely confront the dragon!")
+    success = random.randint(1, 10)
+    if success > 7:
+        print("You defeat the dragon!")
+        print("You gain 100 experience points and collect a large amount of treasure.")
+        character['experience'] += 100
+        character['gold'] = character.get('gold', 0) + 1000
+        character['inventory'].append('Dragon Scale')
+    else:
+        print("The dragon is too powerful!")
+        print("You are forced to retreat, losing some experience points.")
+        character['experience'] -= 20
+
+def sneak_past_dragon(character):
+    """
+    This function allows the player to attempt to sneak past the dragon in the Dragon's Cave.
+    """
+    print("You attempt to sneak past the dragon...")
+    success = random.randint(1, 10)
+    if success > 5:
+        print("You successfully sneak past the dragon!")
+        print("You find a hidden stash of treasure and gain 50 experience points.")
+        character['experience'] += 50
+        character['gold'] = character.get('gold', 0) + 500
+        character['inventory'].append('Hidden Treasure')
+    else:
+        print("The dragon notices you!")
+        print("You manage to escape, but lose some experience points.")
+        character['experience'] -= 10
+
+def steal_treasure(character):
+    """
+    This function allows the player to attempt to steal treasure from the Dragon's Cave.
+    """
+    print("You attempt to steal some treasure...")
+    success = random.randint(1, 10)
+    if success > 6:
+        print("You successfully steal some treasure!")
+        print("You gain 70 experience points and collect a valuable item.")
+        character['experience'] += 70
+        character['gold'] = character.get('gold', 0) + 700
+        character['inventory'].append('Valuable Item')
+    else:
+        print("The dragon catches you!")
+        print("You manage to escape, but lose some experience points.")
+        character['experience'] -= 15
+
+def leave_cave(character):
+    """
+    This function handles the player's decision to leave the Dragon's Cave.
+    """
+    print("You decide to leave the Dragon's Cave.")
+    print("You gain 20 experience points for surviving the encounter.")
+    character['experience'] += 20
