@@ -2528,3 +2528,69 @@ def meet_creatures(character):
         print("You gain 60 experience points and a unicorn horn.")
         character['experience'] += 60
         character['inventory'].append('Unicorn Horn')
+
+def search_secrets(character):
+    """
+    This function allows the player to search for hidden secrets in the Enchanted Forest.
+    """
+    secrets = [
+        'a hidden glade',
+        'an ancient grove',
+        'a sparkling waterfall',
+        'a mysterious cave'
+    ]
+    secret = random.choice(secrets)
+    print(f"You discover {secret}.")
+    if secret == 'a hidden glade':
+        print("The glade is filled with rare flowers and herbs.")
+        print("You gain 40 experience points and collect some rare herbs.")
+        character['experience'] += 40
+        character['inventory'].append('Rare Herbs')
+    elif secret == 'an ancient grove':
+        print("The grove holds ancient trees with magical properties.")
+        print("You gain 50 experience points and find a mystical acorn.")
+        character['experience'] += 50
+        character['inventory'].append('Mystical Acorn')
+    elif secret == 'a sparkling waterfall':
+        print("The waterfall is a source of pure magical water.")
+        print("You gain 30 experience points and collect some magical water.")
+        character['experience'] += 30
+        character['inventory'].append('Magical Water')
+    elif secret == 'a mysterious cave':
+        print("The cave is dark and filled with strange symbols.")
+        print("You gain 60 experience points and find an ancient relic.")
+        character['experience'] += 60
+        character['inventory'].append('Ancient Relic')
+
+def collect_artifacts(character):
+    """
+    This function allows the player to collect powerful artifacts in the Enchanted Forest.
+    """
+    artifacts = [
+        'a wand of great power',
+        'a ring of invisibility',
+        'a cloak of protection',
+        'a necklace of wisdom'
+    ]
+    artifact = random.choice(artifacts)
+    print(f"You find {artifact}.")
+    if artifact == 'a wand of great power':
+        print("The wand enhances your magical abilities.")
+        print("You gain 70 experience points and the Wand of Power.")
+        character['experience'] += 70
+        character['inventory'].append('Wand of Power')
+    elif artifact == 'a ring of invisibility':
+        print("The ring grants you the power of invisibility.")
+        print("You gain 50 experience points and the Ring of Invisibility.")
+        character['experience'] += 50
+        character['inventory'].append('Ring of Invisibility')
+    elif artifact == 'a cloak of protection':
+        print("The cloak offers great protection.")
+        print("You gain 60 experience points and the Cloak of Protection.")
+        character['experience'] += 60
+        character['inventory'].append('Cloak of Protection')
+    elif artifact == 'a necklace of wisdom':
+        print("The necklace grants you great wisdom.")
+        print("You gain 40 experience points and the Necklace of Wisdom.")
+        character['experience'] += 40
+        character['inventory'].append('Necklace of Wisdom')
