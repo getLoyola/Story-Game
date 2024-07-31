@@ -2264,3 +2264,75 @@ def solve_puzzles(character):
         character['experience'] += 35
         character['inventory'].append('Magical Item')
 
+
+def explore_ruins(character):
+    """
+    This function allows the player to explore the ruins of the Lost City.
+    """
+    ruins = [
+        'an ancient temple',
+        'a crumbling castle',
+        'an old marketplace',
+        'a forgotten library'
+    ]
+    ruin = random.choice(ruins)
+    print(f"You explore {ruin}.")
+    if ruin == 'an ancient temple':
+        print("The temple is filled with relics.")
+        print("You find an ancient artifact and gain 60 experience points.")
+        character['experience'] += 60
+        character['inventory'].append('Ancient Artifact')
+    elif ruin == 'a crumbling castle':
+        print("The castle holds many secrets.")
+        print("You discover a secret chamber with valuable items.")
+        character['inventory'].append('Valuable Items')
+        print("You gain 40 experience points.")
+        character['experience'] += 40
+    elif ruin == 'an old marketplace':
+        print("The marketplace is filled with old, dusty goods.")
+        print("You find an old coin and gain 20 experience points.")
+        character['experience'] += 20
+        character['inventory'].append('Old Coin')
+    elif ruin == 'a forgotten library':
+        print("The library is filled with old tomes and scrolls.")
+        print("You gain 50 experience points and find a spellbook.")
+        character['experience'] += 50
+        character['inventory'].append('Spellbook')
+
+def search_treasures(character):
+    """
+    This function allows the player to search for treasures within the Lost City.
+    """
+    treasures = [
+        'a chest of gold',
+        'an ancient relic',
+        'a precious gem',
+        'a hidden cache of artifacts'
+    ]
+    treasure = random.choice(treasures)
+    print(f"You find {treasure}.")
+    if treasure == 'a chest of gold':
+        print("The chest contains a large amount of gold.")
+        character['gold'] = character.get('gold', 0) + 400
+        print("You gain 400 gold coins.")
+        print("You also gain 50 experience points.")
+        character['experience'] += 50
+    elif treasure == 'an ancient relic':
+        print("The relic is valuable and old.")
+        print("You gain 60 experience points and add the relic to your inventory.")
+        character['experience'] += 60
+        character['inventory'].append('Ancient Relic')
+    elif treasure == 'a precious gem':
+        print("The gem is valuable and rare.")
+        character['gold'] = character.get('gold', 0) + 200
+        print("You gain 200 gold coins.")
+        print("You also gain 30 experience points.")
+        character['experience'] += 30
+    elif treasure == 'a hidden cache of artifacts':
+        print("The cache contains several rare artifacts.")
+        print("You gain 70 experience points and add several artifacts to your inventory.")
+        character['experience'] += 70
+        artifacts = ['Ancient Sword', 'Mystic Amulet']
+        character['inventory'].extend(artifacts)
+        print("You find an Ancient Sword and a Mystic Amulet.")
+
