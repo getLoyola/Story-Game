@@ -2391,3 +2391,84 @@ def explore_floors(character):
         print("You gain 30 experience points and a celestial artifact.")
         character['experience'] += 30
         character['inventory'].append('Celestial Artifact')
+
+
+def study_texts(character):
+    """
+    This function allows the player to study magical texts in the Wizard's Tower.
+    """
+    texts = [
+        'a book on elemental magic',
+        'a tome of ancient runes',
+        'a scroll of arcane secrets',
+        'a grimoire of forbidden knowledge'
+    ]
+    text = random.choice(texts)
+    print(f"You study {text}.")
+    if text == 'a book on elemental magic':
+        print("You learn about the elements and gain 40 experience points.")
+        character['experience'] += 40
+        character['inventory'].append('Elemental Magic Book')
+    elif text == 'a tome of ancient runes':
+        print("You decipher ancient runes and gain 50 experience points.")
+        character['experience'] += 50
+        character['inventory'].append('Rune Tome')
+    elif text == 'a scroll of arcane secrets':
+        print("You discover arcane secrets and gain 60 experience points.")
+        character['experience'] += 60
+        character['inventory'].append('Arcane Scroll')
+    elif text == 'a grimoire of forbidden knowledge':
+        print("You delve into forbidden knowledge and gain 70 experience points.")
+        character['experience'] += 70
+        character['inventory'].append('Forbidden Grimoire')
+
+def meet_wizard(character):
+    """
+    This function handles the encounter with the wizard in the Wizard's Tower.
+    """
+    wizards = [
+        'a wise old wizard',
+        'a powerful archmage',
+        'a mysterious sorcerer',
+        'a young prodigy'
+    ]
+    wizard = random.choice(wizards)
+    print(f"You meet {wizard}.")
+    if wizard == 'a wise old wizard':
+        print("The wizard offers you advice and a blessing.")
+        print("You gain 40 experience points and a magical item.")
+        character['experience'] += 40
+        character['inventory'].append('Magical Item')
+    elif wizard == 'a powerful archmage':
+        print("The archmage teaches you a powerful spell.")
+        print("You gain 50 experience points and a new spell.")
+        character['experience'] += 50
+        character['inventory'].append('Powerful Spell')
+    elif wizard == 'a mysterious sorcerer':
+        print("The sorcerer offers you a deal.")
+        # Placeholder for deal decision
+        make_deal(character)
+    elif wizard == 'a young prodigy':
+        print("The prodigy shares their knowledge with you.")
+        print("You gain 30 experience points and a rare artifact.")
+        character['experience'] += 30
+        character['inventory'].append('Rare Artifact')
+
+def make_deal(character):
+    """
+    This function handles the decision-making process when dealing with a mysterious sorcerer.
+    """
+    print("The sorcerer offers you a deal: trade some of your experience points for a powerful item.")
+    print("1. Accept the deal")
+    print("2. Decline the deal")
+    choice = input("What would you like to do? (1/2): ")
+
+    if choice == '1':
+        print("You accept the deal and lose 20 experience points.")
+        character['experience'] -= 20
+        print("In return, you gain a powerful artifact.")
+        character['inventory'].append('Powerful Artifact')
+    elif choice == '2':
+        print("You decline the deal and leave the sorcerer.")
+    else:
+        print("Invalid choice. The deal is off the table.")
