@@ -2472,3 +2472,59 @@ def make_deal(character):
         print("You decline the deal and leave the sorcerer.")
     else:
         print("Invalid choice. The deal is off the table.")
+
+def enchanted_forest(character):
+    """
+    This function represents an exploration of the Enchanted Forest, a mystical place filled with magical creatures,
+    hidden secrets, and powerful artifacts.
+    """
+    print("You enter the Enchanted Forest, a place of wonder and magic.")
+    print("1. Meet the magical creatures")
+    print("2. Search for hidden secrets")
+    print("3. Collect powerful artifacts")
+    print("4. Leave the forest")
+    choice = input("What would you like to do? (1/2/3/4): ")
+
+    if choice == '1':
+        meet_creatures(character)
+    elif choice == '2':
+        search_secrets(character)
+    elif choice == '3':
+        collect_artifacts(character)
+    elif choice == '4':
+        print("You decide to leave the Enchanted Forest.")
+    else:
+        print("Invalid choice. You leave the forest.")
+
+def meet_creatures(character):
+    """
+    This function allows the player to meet and interact with magical creatures in the Enchanted Forest.
+    """
+    creatures = [
+        'a friendly fairy',
+        'a wise old tree spirit',
+        'a mischievous pixie',
+        'a majestic unicorn'
+    ]
+    creature = random.choice(creatures)
+    print(f"You encounter {creature}.")
+    if creature == 'a friendly fairy':
+        print("The fairy offers you a blessing and a gift.")
+        print("You gain 30 experience points and a magical trinket.")
+        character['experience'] += 30
+        character['inventory'].append('Magical Trinket')
+    elif creature == 'a wise old tree spirit':
+        print("The tree spirit shares ancient wisdom with you.")
+        print("You gain 50 experience points and a rare herb.")
+        character['experience'] += 50
+        character['inventory'].append('Rare Herb')
+    elif creature == 'a mischievous pixie':
+        print("The pixie plays a trick on you.")
+        print("You lose 20 experience points but gain a clue to a hidden treasure.")
+        character['experience'] -= 20
+        character['inventory'].append('Treasure Clue')
+    elif creature == 'a majestic unicorn':
+        print("The unicorn offers you a ride and a blessing.")
+        print("You gain 60 experience points and a unicorn horn.")
+        character['experience'] += 60
+        character['inventory'].append('Unicorn Horn')
