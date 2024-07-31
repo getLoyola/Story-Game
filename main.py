@@ -2336,3 +2336,58 @@ def search_treasures(character):
         character['inventory'].extend(artifacts)
         print("You find an Ancient Sword and a Mystic Amulet.")
 
+def wizard_tower(character):
+    """
+    This function represents an exploration of the Wizard's Tower, a place of arcane knowledge and magical artifacts.
+    The player can choose to explore different floors, study magical texts, or meet with a powerful wizard.
+    """
+    print("You arrive at the Wizard's Tower, a tall and imposing structure filled with magical energy.")
+    print("1. Explore the different floors")
+    print("2. Study magical texts")
+    print("3. Meet with the wizard")
+    print("4. Leave the tower")
+    choice = input("What would you like to do? (1/2/3/4): ")
+
+    if choice == '1':
+        explore_floors(character)
+    elif choice == '2':
+        study_texts(character)
+    elif choice == '3':
+        meet_wizard(character)
+    elif choice == '4':
+        print("You decide to leave the Wizard's Tower.")
+    else:
+        print("Invalid choice. You leave the tower.")
+
+def explore_floors(character):
+    """
+    This function allows the player to explore different floors of the Wizard's Tower.
+    """
+    floors = [
+        'the alchemy lab',
+        'the enchantment chamber',
+        'the library of spells',
+        'the astral observatory'
+    ]
+    floor = random.choice(floors)
+    print(f"You explore {floor}.")
+    if floor == 'the alchemy lab':
+        print("The lab is filled with strange potions and ingredients.")
+        print("You find a powerful potion and gain 40 experience points.")
+        character['experience'] += 40
+        character['inventory'].append('Powerful Potion')
+    elif floor == 'the enchantment chamber':
+        print("The chamber is where magical items are crafted.")
+        print("You find an enchanted item and gain 50 experience points.")
+        character['experience'] += 50
+        character['inventory'].append('Enchanted Item')
+    elif floor == 'the library of spells':
+        print("The library contains a vast collection of spellbooks.")
+        print("You learn a new spell and gain 60 experience points.")
+        character['experience'] += 60
+        character['inventory'].append('New Spell')
+    elif floor == 'the astral observatory':
+        print("The observatory offers a view of the stars and magical phenomena.")
+        print("You gain 30 experience points and a celestial artifact.")
+        character['experience'] += 30
+        character['inventory'].append('Celestial Artifact')
